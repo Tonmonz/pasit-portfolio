@@ -3,7 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Pasit Boonyinglour — Backend Developer</title>
+  <title>Pasit Boonyinglour — Software Developer</title>
+  <meta name="description" content="Pasit Boonyinglour — Computer Science student at Kasetsart University. Full-stack developer with experience in React, Next.js, and UI/UX Design. Available for internship 2026." />
+  <meta property="og:title" content="Pasit Boonyinglour — Software Developer" />
+  <meta property="og:description" content="Computer Science student at Kasetsart University. Full-stack developer with experience in React, Next.js, and UI/UX Design. Available for internship 2026." />
+  <meta property="og:image" content="pic/33.png" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Pasit Boonyinglour — Software Developer" />
+  <meta name="twitter:description" content="Computer Science student at Kasetsart University. Available for internship 2026." />
+  <link rel="icon" type="image/png" href="pic/logo.png" />
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap');
 
@@ -121,12 +130,12 @@
       font-family: 'DM Mono', monospace;
       font-size: 13px;
       letter-spacing: 0.06em;
-      color: var(--muted);
+      color: var(--text);
       text-decoration: none;
       transition: color 0.2s;
     }
 
-    .nav-link:hover { color: var(--text); }
+    .nav-link:hover { color: var(--accent); }
 
     .nav-contact {
       font-family: 'DM Mono', monospace;
@@ -259,7 +268,7 @@
       font-family: 'DM Mono', monospace;
       font-size: 12px;
       letter-spacing: 0.08em;
-      color: var(--muted);
+      color: var(--text);
       border: 1px solid var(--border);
       border-radius: 999px;
       padding: 6px 14px;
@@ -283,7 +292,7 @@
       font-family: 'DM Mono', monospace;
       font-size: 13px;
       letter-spacing: 0.08em;
-      color: var(--muted);
+      color: var(--text);
       margin-bottom: 12px;
       transition: color 0.3s;
     }
@@ -455,7 +464,7 @@
       font-family: 'DM Mono', monospace;
       font-size: 11px;
       letter-spacing: 0.06em;
-      color: var(--muted);
+      color: var(--text);
       border: 1px solid var(--border);
       padding: 3px 10px;
       border-radius: 2px;
@@ -497,11 +506,12 @@
 
     .timeline-item {
       display: grid;
-      grid-template-columns: 180px 1fr;
-      gap: 32px;
-      padding: 28px 0;
+      grid-template-columns: 88px 160px 1fr;
+      gap: 28px;
+      padding: 32px 0;
       border-bottom: 1px solid var(--border);
       transition: border-color 0.3s;
+      align-items: center;
     }
 
     .timeline-item:first-child { border-top: 1px solid var(--border); }
@@ -509,23 +519,32 @@
     .timeline-date {
       font-family: 'DM Mono', monospace;
       font-size: 13px;
-      color: var(--muted);
+      color: var(--text);
       padding-top: 3px;
       transition: color 0.3s;
+    }
+
+    .timeline-logo {
+      width: 80px;
+      height: 80px;
+      object-fit: contain;
+      border-radius: 10px;
     }
 
     .timeline-role {
       font-size: 16px;
       font-weight: 500;
       color: var(--text);
-      margin-bottom: 4px;
+      margin-bottom: 6px;
       transition: color 0.3s;
     }
 
     .timeline-company {
-      font-family: 'DM Mono', monospace;
-      font-size: 13px;
-      color: var(--muted);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 2px;
       transition: color 0.3s;
     }
 
@@ -535,6 +554,82 @@
       line-height: 1.7;
       margin-top: 8px;
       transition: color 0.3s;
+    }
+
+    .course-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      margin-top: 12px;
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      cursor: pointer;
+      background: none;
+      border: 1px solid var(--accent);
+      border-radius: 999px;
+      padding: 5px 14px;
+      transition: background 0.2s, color 0.2s;
+    }
+    .course-toggle:hover { background: var(--accent); color: #fff; }
+    .course-toggle svg { transition: transform 0.3s; flex-shrink: 0; }
+    .course-toggle.open svg { transform: rotate(180deg); }
+    .course-toggle.open { background: var(--accent); color: #fff; }
+
+    .course-dropdown {
+      overflow: hidden;
+      max-height: 0;
+      transition: max-height 0.4s ease, opacity 0.3s ease, margin-top 0.3s;
+      opacity: 0;
+      margin-top: 0;
+    }
+    .course-dropdown.open {
+      max-height: 1000px;
+      opacity: 1;
+      margin-top: 16px;
+    }
+    .course-dropdown-inner {
+      padding: 20px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: var(--surface);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .course-group-title {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 8px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid var(--border);
+    }
+    .course-list {
+      list-style: none;
+      padding: 0; margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .course-list li {
+      font-size: 13px;
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      line-height: 1.5;
+      padding-left: 10px;
+      position: relative;
+    }
+    .course-list li::before {
+      content: '·';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
     }
 
     /* ── About ── */
@@ -691,14 +786,70 @@
 
     .mag-link:hover::after { width: 100%; }
 
+    /* ── Hamburger ── */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 36px;
+      height: 36px;
+      background: none;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      cursor: none;
+      padding: 8px;
+      transition: border-color 0.2s;
+    }
+    .hamburger:hover { border-color: var(--accent); }
+    .hamburger span {
+      display: block;
+      height: 1.5px;
+      background: var(--text);
+      border-radius: 2px;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 64px;
+      left: 0; right: 0;
+      background: var(--nav-bg);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      flex-direction: column;
+      padding: 24px;
+      gap: 20px;
+      z-index: 99;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-family: 'DM Mono', monospace;
+      font-size: 14px;
+      letter-spacing: 0.08em;
+      color: var(--text);
+      text-decoration: none;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border);
+      transition: color 0.2s;
+    }
+    .mobile-menu a:last-child { border-bottom: none; }
+    .mobile-menu a:hover { color: var(--accent); }
+
     /* ── Responsive ── */
     @media (max-width: 768px) {
       body { cursor: auto; }
       #cursor, #cursor-ring { display: none; }
 
       nav { padding: 0 24px; }
-      .nav-right { gap: 16px; }
+      .nav-right { gap: 12px; }
       .nav-link { display: none; }
+      .hamburger { display: flex; }
 
       section { padding: 72px 24px; }
 
@@ -741,6 +892,14 @@
   <div id="cursor"></div>
   <div id="cursor-ring"></div>
 
+  <!-- Mobile menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#projects" onclick="closeMobileMenu()">Project</a>
+    <a href="#experience" onclick="closeMobileMenu()">Experience</a>
+    <a href="#about" onclick="closeMobileMenu()">About</a>
+    <a href="#contact" onclick="closeMobileMenu()">Contact</a>
+  </div>
+
   <!-- Navbar -->
   <nav>
     <a href="#hero" class="nav-name">Pasit.</a>
@@ -765,6 +924,9 @@
         </svg>
       </button>
       <a href="#contact" class="nav-contact">Contact</a>
+      <button class="hamburger" id="hamburger" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </nav>
 
@@ -907,13 +1069,80 @@
     <p class="section-label reveal"><span class="label-num">02</span><span class="label-text"> / Experience</span></p>
     <div class="timeline">
       <div class="timeline-item reveal">
+        <img src="pic/kasetsartlogo.png" alt="Kasetsart University" class="timeline-logo" />
         <span class="timeline-date">2023 — Present</span>
         <div>
           <p class="timeline-role">Computer Science Student</p>
           <p class="timeline-company">Kasetsart University</p>
+          <p class="timeline-desc">Currently entering 4th year — Faculty of Science, Bachelor of Science in Computer Science.</p>
+          <button class="course-toggle" onclick="this.classList.toggle('open'); this.nextElementSibling.classList.toggle('open')">
+            Relevant Courses
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+              <path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <div class="course-dropdown">
+            <div class="course-dropdown-inner">
+            <div class="course-group">
+              <p class="course-group-title">Programming / Software Development</p>
+              <ul class="course-list">
+                <li>Introduction to Computer Science</li>
+                <li>Fundamental Programming Concepts</li>
+                <li>Computer Programming</li>
+                <li>Software Construction</li>
+                <li>Selected Topic in Computer Science</li>
+              </ul>
+            </div>
+            <div class="course-group">
+              <p class="course-group-title">Data / Database / Report</p>
+              <ul class="course-list">
+                <li>Statistical Programming</li>
+                <li>Fundamentals of Database Systems</li>
+                <li>Business Data Dimension and Report Management</li>
+                <li>Enterprise Information System</li>
+              </ul>
+            </div>
+            <div class="course-group">
+              <p class="course-group-title">Algorithms / Computer Fundamentals</p>
+              <ul class="course-list">
+                <li>Fundamentals of Computing</li>
+                <li>Data Structures and Algorithms</li>
+                <li>Algorithm Design and Analysis</li>
+                <li>Computer Architecture</li>
+                <li>Theory of Computation</li>
+              </ul>
+            </div>
+            <div class="course-group">
+              <p class="course-group-title">AI / Machine Learning</p>
+              <ul class="course-list">
+                <li>Machine Learning Systems</li>
+                <li>Fundamentals of Artificial Intelligence</li>
+              </ul>
+            </div>
+            <div class="course-group">
+              <p class="course-group-title">System / Network / Security / Cloud</p>
+              <ul class="course-list">
+                <li>Operating Systems</li>
+                <li>Computer Networks and Cloud Computing Principles</li>
+                <li>Information System Security</li>
+              </ul>
+            </div>
+            <div class="course-group">
+              <p class="course-group-title">Analysis / Design / UX / Project</p>
+              <ul class="course-list">
+                <li>System Analysis and Design</li>
+                <li>User Experience and User Interface Design</li>
+                <li>Project Management and Digital Startup</li>
+                <li>Cooperative Education Preparation</li>
+                <li>Seminar</li>
+              </ul>
+            </div>
+            </div>
+          </div>
         </div>
       </div>
       <div class="timeline-item reveal">
+        <img src="pic/ocs.png" alt="OCS" class="timeline-logo" />
         <span class="timeline-date">Apr 2025 — Jun 2025</span>
         <div>
           <p class="timeline-role">Frontend Developer Intern</p>
@@ -922,10 +1151,11 @@
         </div>
       </div>
       <div class="timeline-item reveal">
+        <span></span>
         <span class="timeline-date">2026</span>
         <div>
           <p class="timeline-role">Internship — Open to Opportunities</p>
-          <p class="timeline-company">Looking for Backend / Full-Stack / System Analyst / Business Analyst (BA) / Software Tester / QA Engineer roles</p>
+          <p class="timeline-desc">Looking for Backend / Full-Stack / System Analyst / Business Analyst (BA) / Software Tester / QA Engineer roles</p>
         </div>
       </div>
     </div>
@@ -1089,6 +1319,18 @@
       el.style.transitionDelay = (i % 3) * 0.08 + 's';
       observer.observe(el);
     });
+
+    // ── Hamburger menu ──
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      mobileMenu.classList.toggle('open');
+    });
+    function closeMobileMenu() {
+      hamburger.classList.remove('open');
+      mobileMenu.classList.remove('open');
+    }
 
     // ── Smooth scroll ──
     document.querySelectorAll('a[href^="#"]').forEach(a => {
