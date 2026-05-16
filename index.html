@@ -1,0 +1,1106 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pasit Boonyinglour — Backend Developer</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap');
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* ── Theme variables ── */
+    [data-theme="dark"] {
+      --bg: #0a0a0a;
+      --surface: #111111;
+      --border: #1e1e1e;
+      --text: #e8e4dc;
+      --muted: #888888;
+      --accent: #3ddc84;
+      --nav-bg: rgba(10,10,10,0.85);
+      --cursor-color: #3ddc84;
+    }
+
+    [data-theme="light"] {
+      --bg: #f5f2ed;
+      --surface: #ffffff;
+      --border: #e0dbd3;
+      --text: #1a1814;
+      --muted: #5a5550;
+      --accent: #1a7a45;
+      --nav-bg: rgba(245,242,237,0.85);
+      --cursor-color: #1a7a45;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 17px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      transition: background 0.3s, color 0.3s;
+      cursor: none;
+    }
+
+    /* ── Custom cursor ── */
+    #cursor {
+      position: fixed;
+      top: 0; left: 0;
+      width: 10px; height: 10px;
+      background: var(--accent);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: transform 0.08s, width 0.2s, height 0.2s, opacity 0.2s;
+    }
+
+    #cursor-ring {
+      position: fixed;
+      top: 0; left: 0;
+      width: 36px; height: 36px;
+      border: 1px solid var(--accent);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9998;
+      transform: translate(-50%, -50%);
+      transition: transform 0.18s ease, width 0.2s, height 0.2s, opacity 0.2s, border-color 0.2s;
+      opacity: 0.5;
+    }
+
+    body.cursor-hover #cursor {
+      width: 16px; height: 16px;
+      opacity: 0.6;
+    }
+
+    body.cursor-hover #cursor-ring {
+      width: 56px; height: 56px;
+      opacity: 0.25;
+    }
+
+    /* ── Navbar ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: var(--nav-bg);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 48px;
+      height: 64px;
+      transition: background 0.3s, border-color 0.3s;
+    }
+
+    .nav-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 30px;
+      letter-spacing: 0.02em;
+      color: var(--text);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .nav-link {
+      font-family: 'DM Mono', monospace;
+      font-size: 13px;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-link:hover { color: var(--text); }
+
+    .nav-contact {
+      font-family: 'DM Mono', monospace;
+      font-size: 13px;
+      letter-spacing: 0.06em;
+      color: var(--text);
+      text-decoration: none;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 6px 18px;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .nav-contact:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    /* Theme toggle button */
+    .theme-toggle {
+      background: none;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      width: 36px;
+      height: 36px;
+      position: relative;
+      cursor: none;
+      transition: border-color 0.2s, background 0.3s;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+    }
+
+    .theme-toggle:hover {
+      border-color: var(--accent);
+    }
+
+    .theme-toggle .icon-moon,
+    .theme-toggle .icon-sun {
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      transition: opacity 0.2s, transform 0.3s;
+      color: var(--muted);
+    }
+
+    [data-theme="dark"] .theme-toggle .icon-moon { opacity: 1; transform: rotate(0deg); }
+    [data-theme="dark"] .theme-toggle .icon-sun  { opacity: 0; transform: rotate(90deg); }
+    [data-theme="light"] .theme-toggle .icon-moon { opacity: 0; transform: rotate(-90deg); }
+    [data-theme="light"] .theme-toggle .icon-sun  { opacity: 1; transform: rotate(0deg); }
+    [data-theme="light"] .project-tag { color: #fff; }
+
+    /* ── Sections ── */
+    section {
+      padding: 100px 48px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--text);
+      margin-bottom: 56px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .label-num { color: var(--text); }
+    .label-text { color: var(--accent); }
+
+    .section-label::after {
+      content: '';
+      flex: 1;
+      max-width: 60px;
+      height: 1px;
+      background: var(--text);
+      opacity: 0.4;
+    }
+
+    .section-heading {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(40px, 5vw, 64px);
+      font-weight: 700;
+      line-height: 1.1;
+      color: var(--text);
+      margin-bottom: 56px;
+      transition: color 0.3s;
+    }
+
+    .section-heading em {
+      font-style: italic;
+      color: var(--accent);
+      transition: color 0.3s;
+    }
+
+    /* ── Scroll reveal ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.7s cubic-bezier(0.4,0,0.2,1), transform 0.7s cubic-bezier(0.4,0,0.2,1);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── Hero ── */
+    #hero {
+      padding-top: 160px;
+      padding-bottom: 120px;
+      display: flex;
+      align-items: center;
+      gap: 64px;
+    }
+
+    .hero-left { flex: 1; }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'DM Mono', monospace;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 6px 14px;
+      margin-bottom: 32px;
+      transition: border-color 0.3s, color 0.3s;
+    }
+
+    .badge-dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: var(--accent);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    .hero-greeting {
+      font-family: 'DM Mono', monospace;
+      font-size: 13px;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      margin-bottom: 12px;
+      transition: color 0.3s;
+    }
+
+    .hero-heading {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(48px, 6vw, 80px);
+      font-weight: 700;
+      line-height: 1.1;
+      color: var(--text);
+      margin-bottom: 24px;
+      transition: color 0.3s;
+    }
+
+    .hero-heading em {
+      font-style: italic;
+      color: var(--accent);
+      transition: color 0.3s;
+    }
+
+    .hero-bio {
+      font-size: 16px;
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: 440px;
+      margin-bottom: 40px;
+      transition: color 0.3s;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      font-family: 'DM Mono', monospace;
+      font-size: 13px;
+      letter-spacing: 0.06em;
+      background: var(--text);
+      color: var(--bg);
+      text-decoration: none;
+      padding: 12px 28px;
+      border-radius: 4px;
+      transition: opacity 0.2s, background 0.3s, color 0.3s;
+    }
+
+    .btn-primary:hover { opacity: 0.85; }
+
+    .btn-secondary {
+      font-family: 'DM Mono', monospace;
+      font-size: 13px;
+      letter-spacing: 0.06em;
+      color: var(--text);
+      text-decoration: none;
+      border: 1px solid var(--border);
+      padding: 12px 28px;
+      border-radius: 4px;
+      transition: border-color 0.2s, color 0.3s;
+    }
+
+    .btn-secondary:hover { border-color: var(--text); }
+
+    .hero-right { flex-shrink: 0;  }
+
+    .hero-photo {
+      width: 380px;
+      height: 380px;
+      object-fit: cover;
+      object-position: center 20%;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      display: block;
+      filter: grayscale(20%);
+      transition: border-color 0.3s, transform 0.4s cubic-bezier(0.4,0,0.2,1);
+    }
+
+    .hero-photo:hover {
+      transform: scale(1.02);
+    }
+
+    /* ── Projects ── */
+    #projects { border-top: 1px solid var(--border); }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .project-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: border-color 0.25s, transform 0.3s cubic-bezier(0.4,0,0.2,1), box-shadow 0.3s, background 0.3s;
+    }
+
+    .project-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.3);
+    }
+
+    [data-theme="light"] .project-card:hover {
+      box-shadow: 0 16px 40px rgba(0,0,0,0.1);
+    }
+
+    .project-thumb {
+      position: relative;
+      display: block;
+      overflow: hidden;
+    }
+
+    .project-thumb img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s cubic-bezier(0.4,0,0.2,1);
+    }
+
+    .project-card:hover .project-thumb img {
+      transform: scale(1.04);
+    }
+
+    .project-tag {
+      position: absolute;
+      top: 12px; left: 12px;
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      background: var(--accent);
+      color: #000;
+      padding: 4px 10px;
+      border-radius: 2px;
+      font-weight: 500;
+    }
+
+    .project-body { padding: 24px; display: flex; flex-direction: column; flex: 1; }
+
+    .project-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 10px;
+      transition: color 0.3s;
+    }
+
+    .project-desc {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 20px;
+      transition: color 0.3s;
+    }
+
+    .project-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+
+    .stack-pill {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      border: 1px solid var(--border);
+      padding: 3px 10px;
+      border-radius: 2px;
+      transition: color 0.3s, border-color 0.3s;
+    }
+
+    .project-link {
+      font-family: 'DM Mono', monospace;
+      font-size: 12px;
+      letter-spacing: 0.06em;
+      color: var(--accent);
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+
+    .project-link:hover { opacity: 0.7; }
+
+    .project-card.placeholder {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 380px;
+      border-style: dashed;
+    }
+
+    .placeholder-text {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      color: var(--border);
+      text-transform: uppercase;
+      transition: color 0.3s;
+    }
+
+    /* ── Experience ── */
+    #experience { border-top: 1px solid var(--border); }
+
+    .timeline { display: flex; flex-direction: column; }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 32px;
+      padding: 28px 0;
+      border-bottom: 1px solid var(--border);
+      transition: border-color 0.3s;
+    }
+
+    .timeline-item:first-child { border-top: 1px solid var(--border); }
+
+    .timeline-date {
+      font-family: 'DM Mono', monospace;
+      font-size: 13px;
+      color: var(--muted);
+      padding-top: 3px;
+      transition: color 0.3s;
+    }
+
+    .timeline-role {
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--text);
+      margin-bottom: 4px;
+      transition: color 0.3s;
+    }
+
+    .timeline-company {
+      font-family: 'DM Mono', monospace;
+      font-size: 13px;
+      color: var(--muted);
+      transition: color 0.3s;
+    }
+
+    .timeline-desc {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-top: 8px;
+      transition: color 0.3s;
+    }
+
+    /* ── About ── */
+    #about {
+      border-top: 1px solid var(--border);
+      display: flex;
+      gap: 80px;
+      align-items: flex-start;
+    }
+
+    .about-left { flex: 1; }
+
+    .about-heading {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(28px, 3vw, 42px);
+      font-weight: 700;
+      line-height: 1.1;
+      color: var(--text);
+      margin-bottom: 24px;
+      transition: color 0.3s;
+    }
+
+    .about-heading em {
+      font-style: italic;
+      color: var(--accent);
+      transition: color 0.3s;
+    }
+
+    .about-right { flex: 1; }
+
+    .about-bio {
+      font-size: 16px;
+      color: var(--text);
+      line-height: 2;
+      margin-bottom: 40px;
+      transition: color 0.3s;
+      opacity: 0.75;
+    }
+
+    .toolkit-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 16px;
+      transition: color 0.3s;
+    }
+
+    .toolkit-groups {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .toolkit-group { display: flex; flex-direction: column; gap: 10px; }
+
+    .toolkit-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .toolkit-pill {
+      font-family: 'DM Mono', monospace;
+      font-size: 12px;
+      letter-spacing: 0.04em;
+      color: var(--text);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 4px 12px;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .toolkit-pill:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    /* ── Contact / Footer ── */
+    #contact {
+      border-top: 1px solid var(--border);
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 100px 48px 60px;
+      text-align: center;
+    }
+
+    .contact-heading {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(36px, 5vw, 64px);
+      font-weight: 700;
+      line-height: 1.05;
+      color: var(--text);
+      margin-bottom: 48px;
+      transition: color 0.3s;
+    }
+
+    .contact-heading em {
+      font-style: italic;
+      color: var(--accent);
+      transition: color 0.3s;
+    }
+
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-bottom: 80px;
+    }
+
+    .contact-link {
+      font-family: 'DM Mono', monospace;
+      font-size: 14px;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      text-decoration: none;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 4px;
+      transition: color 0.2s, border-color 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .contact-link:hover {
+      color: var(--text);
+      border-color: var(--text);
+    }
+
+    .footer-copy {
+      font-family: 'DM Mono', monospace;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      text-transform: uppercase;
+      transition: color 0.3s;
+    }
+
+    /* ── Magnetic link underline ── */
+    .mag-link {
+      position: relative;
+      display: inline-block;
+    }
+
+    .mag-link::after {
+      content: '';
+      position: absolute;
+      bottom: -2px; left: 0;
+      width: 0; height: 1px;
+      background: var(--accent);
+      transition: width 0.3s cubic-bezier(0.4,0,0.2,1);
+    }
+
+    .mag-link:hover::after { width: 100%; }
+
+    /* ── Responsive ── */
+    @media (max-width: 768px) {
+      body { cursor: auto; }
+      #cursor, #cursor-ring { display: none; }
+
+      nav { padding: 0 24px; }
+      .nav-right { gap: 16px; }
+      .nav-link { display: none; }
+
+      section { padding: 72px 24px; }
+
+      #hero {
+        flex-direction: column-reverse;
+        padding-top: 100px;
+        padding-bottom: 72px;
+        gap: 40px;
+      }
+
+      .hero-photo { width: 100%; height: 260px; }
+
+      .projects-grid { grid-template-columns: 1fr; }
+
+      .timeline-item {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+
+      #about {
+        flex-direction: column;
+        gap: 40px;
+      }
+
+      .about-heading { position: static; }
+
+      #contact { padding: 72px 24px 48px; }
+
+      .contact-links {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Custom cursor -->
+  <div id="cursor"></div>
+  <div id="cursor-ring"></div>
+
+  <!-- Navbar -->
+  <nav>
+    <a href="#hero" class="nav-name">Pasit.</a>
+    <div class="nav-right">
+      <a href="#projects" class="nav-link mag-link">Project</a>
+      <a href="#experience" class="nav-link mag-link">Experience</a>
+      <a href="#about" class="nav-link mag-link">About</a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+        <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="5"/>
+          <line x1="12" y1="1" x2="12" y2="3"/>
+          <line x1="12" y1="21" x2="12" y2="23"/>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+          <line x1="1" y1="12" x2="3" y2="12"/>
+          <line x1="21" y1="12" x2="23" y2="12"/>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+        </svg>
+      </button>
+      <a href="#contact" class="nav-contact">Contact</a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section id="hero">
+    <div class="hero-left reveal">
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        Available for Internship 2026
+      </div>
+      <p class="hero-greeting">Hello, I'm Pasit Boonyinglour</p>
+      <h1 class="hero-heading">
+        Software<br><em>Developer</em>
+      </h1>
+      <p class="hero-bio">
+        A motivated Computer Science student with internship experience in frontend development and a strong foundation in Full-stack, UI/UX Design, and Software Testing.
+      </p>
+      <div class="hero-buttons">
+        <a href="#projects" class="btn-primary">Explore Works</a>
+        <a href="pdf/Resume_Pasit.pdf" target="_blank" class="btn-secondary">Resume CV ↗</a>
+      </div>
+    </div>
+    <div class="hero-right reveal">
+      <img
+        src="pic/33.png"
+        alt="Pasit Boonyinglour"
+        class="hero-photo"
+      />
+    </div>
+  </section>
+
+  <!-- 01 / Projects -->
+  <section id="projects">
+    <p class="section-label reveal"><span class="label-num">01</span><span class="label-text"> / Projects &amp; Works</span></p>
+    <div class="projects-grid">
+
+      <div class="project-card reveal">
+        <div class="project-thumb">
+          <img src="pic/card1.png" alt="Nurse Shift Management System" />
+          <span class="project-tag">Full Stack · System Analyst</span>
+        </div>
+        <div class="project-body">
+          <h3 class="project-title">Nurse Shift Management System</h3>
+          <p class="project-desc">
+            A web-based shift scheduling system for hospital departments (ICU, ER, Surgery, and more). Replaces error-prone Excel-based planning with real-time schedule visibility, shift-swap requests, and workload balancing — reducing human error and improving patient care continuity across 24-hour operations.
+          </p>
+          <div class="project-stack">
+            <span class="stack-pill">Next.js</span>
+            <span class="stack-pill">React</span>
+            <span class="stack-pill">TypeScript</span>
+            <span class="stack-pill">Tailwind CSS</span>
+            <span class="stack-pill">PostgreSQL</span>
+            <span class="stack-pill">Supabase</span>
+            <span class="stack-pill">UML</span>
+            <span class="stack-pill">ER Diagram</span>
+            <span class="stack-pill">Use Case</span>
+            <span class="stack-pill">Business Process</span>
+            <span class="stack-pill">UI Design</span>
+          </div>
+          <div style="display:flex; gap:16px; flex-wrap:wrap; margin-top:auto;">
+            <a href="https://github.com/sa-project-2025/nurse-shift-system" target="_blank" rel="noopener" class="project-link">View on GitHub ↗</a>
+            <a href="pdf/SA_Project__.pdf" target="_blank" class="project-link">SA Report ↗</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card reveal">
+        <div class="project-thumb">
+          <img src="pic/card2.png" alt="KU Club Web-App" />
+          <span class="project-tag">Frontend · Internship</span>
+        </div>
+        <div class="project-body">
+          <h3 class="project-title">KU Club Web-App</h3>
+          <p class="project-desc">
+            Developed responsive and modern UI components for Kasetsart University's official club discovery platform — enhancing usability and helping students easily explore club details, activities, and memberships.
+          </p>
+          <div class="project-stack">
+            <span class="stack-pill">React</span>
+            <span class="stack-pill">Tailwind CSS</span>
+            <span class="stack-pill">JavaScript</span>
+          </div>
+          <div style="display:flex; gap:16px; flex-wrap:wrap; margin-top:auto;">
+            <a href="https://kuclubs.sa.ku.ac.th/" target="_blank" rel="noopener" class="project-link">View Live ↗</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card reveal">
+        <div class="project-thumb">
+          <img src="pic/card3.png" alt="RunMate" />
+          <span class="project-tag">UX/UI Design</span>
+        </div>
+        <div class="project-body">
+          <h3 class="project-title">RunMate — Run Tracking App</h3>
+          <p class="project-desc">
+            A UI/UX prototype for a run tracking mobile application. Designed with a focus on clean user flows, intuitive navigation, and motivating visuals — helping runners log activities, track progress, and stay consistent.
+          </p>
+          <div class="project-stack">
+            <span class="stack-pill">Figma</span>
+            <span class="stack-pill">Behance</span>
+            <span class="stack-pill">UI Design</span>
+          </div>
+          <div style="display:flex; gap:16px; flex-wrap:wrap; margin-top:auto;">
+            <a href="https://www.behance.net/gallery/237588813/RunMate" target="_blank" rel="noopener" class="project-link">View on Behance ↗</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card reveal">
+        <div class="project-thumb">
+          <img src="pic/card4.png" alt="Student Request Management System" />
+          <span class="project-tag">JavaFX · OOP</span>
+        </div>
+        <div class="project-body">
+          <h3 class="project-title">Student Request Management System</h3>
+          <p class="project-desc">
+            A desktop application for Kasetsart University students to submit and track academic requests. Built with JavaFX following MVC architecture — featuring role-based access, request status tracking, and a clean UI.
+          </p>
+          <div class="project-stack">
+            <span class="stack-pill">JavaFX</span>
+            <span class="stack-pill">OOP</span>
+            <span class="stack-pill">MVC</span>
+            <span class="stack-pill">CSS</span>
+          </div>
+          <div style="display:flex; gap:16px; flex-wrap:wrap; margin-top:auto;">
+            <a href="pdf/project_tysm.pdf" target="_blank" class="project-link">View Report ↗</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card placeholder reveal">
+        <span class="placeholder-text">Coming Soon</span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 02 / Experience -->
+  <section id="experience">
+    <p class="section-label reveal"><span class="label-num">02</span><span class="label-text"> / Experience</span></p>
+    <div class="timeline">
+      <div class="timeline-item reveal">
+        <span class="timeline-date">2023 — Present</span>
+        <div>
+          <p class="timeline-role">Computer Science Student</p>
+          <p class="timeline-company">Kasetsart University</p>
+        </div>
+      </div>
+      <div class="timeline-item reveal">
+        <span class="timeline-date">Apr 2025 — Jun 2025</span>
+        <div>
+          <p class="timeline-role">Frontend Developer Intern</p>
+          <p class="timeline-company">Office of Computer Services (OCS), Kasetsart University</p>
+          <p class="timeline-desc">Developed responsive and modern UI components for the KU Club Web-App.</p>
+        </div>
+      </div>
+      <div class="timeline-item reveal">
+        <span class="timeline-date">2026</span>
+        <div>
+          <p class="timeline-role">Internship — Open to Opportunities</p>
+          <p class="timeline-company">Looking for Backend / Full-Stack / System Analyst / Business Analyst (BA) / Software Tester / QA Engineer roles</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 / About -->
+  <section id="about">
+    <div class="about-left reveal">
+      <p class="section-label"><span class="label-num">03</span><span class="label-text"> / About Me</span></p>
+      <h2 class="about-heading">
+        Who I <em>Am.</em>
+      </h2>
+      <p class="about-bio">
+        A motivated Computer Science student with practical internship experience in frontend development and a strong foundation in Full-stack, UI/UX Design, System Analysis and Software Testing. Eager to apply analytical and technical skills to develop scalable and user-centric software solutions.
+      </p>
+    </div>
+    <div class="about-right reveal">
+      <p class="toolkit-label" style="font-size:15px; font-weight:700; color:var(--accent); margin-bottom:24px; letter-spacing:0.16em;">Tech Skills</p>
+      <div class="toolkit-groups">
+        <div class="toolkit-group">
+          <p class="toolkit-label">Frontend</p>
+          <div class="toolkit-pills">
+            <span class="toolkit-pill">React</span>
+            <span class="toolkit-pill">Next.js</span>
+            <span class="toolkit-pill">TypeScript</span>
+            <span class="toolkit-pill">JavaScript</span>
+            <span class="toolkit-pill">HTML/CSS</span>
+            <span class="toolkit-pill">Tailwind</span>
+          </div>
+        </div>
+        <div class="toolkit-group">
+          <p class="toolkit-label">Backend</p>
+          <div class="toolkit-pills">
+            <span class="toolkit-pill">Python</span>
+            <span class="toolkit-pill">Java</span>
+            <span class="toolkit-pill">Node.js</span>
+            <span class="toolkit-pill">Go</span>
+            <span class="toolkit-pill">PHP</span>
+            <span class="toolkit-pill">C/C++</span>
+            <span class="toolkit-pill">REST API</span>
+            <span class="toolkit-pill">OOP</span>
+          </div>
+        </div>
+        <div class="toolkit-group">
+          <p class="toolkit-label">Database / Cloud</p>
+          <div class="toolkit-pills">
+            <span class="toolkit-pill">PostgreSQL</span>
+            <span class="toolkit-pill">MySQL</span>
+            <span class="toolkit-pill">Supabase</span>
+            <span class="toolkit-pill">pgAdmin 4</span>
+          </div>
+        </div>
+        <div class="toolkit-group">
+          <p class="toolkit-label">Tools</p>
+          <div class="toolkit-pills">
+            <span class="toolkit-pill">Git/GitHub</span>
+            <span class="toolkit-pill">Docker</span>
+            <span class="toolkit-pill">Postman</span>
+            <span class="toolkit-pill">Swagger</span>
+            <span class="toolkit-pill">Shell</span>
+          </div>
+        </div>
+        <div class="toolkit-group">
+          <p class="toolkit-label">Software Engineering</p>
+          <div class="toolkit-pills">
+            <span class="toolkit-pill">Software Testing</span>
+            <span class="toolkit-pill">System Analysis</span>
+            <span class="toolkit-pill">MVC</span>
+            <span class="toolkit-pill">Figma</span>
+            <span class="toolkit-pill">JUnit</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact / Footer -->
+  <footer id="contact">
+    <h2 class="contact-heading reveal">
+      Let's Build<br><em>The Future.</em>
+    </h2>
+    <div class="contact-links reveal">
+      <a href="mailto:pasit.monmai@gmail.com" class="contact-link">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+        pasit.monmai@gmail.com
+      </a>
+      <a href="https://github.com/tonmonz" target="_blank" rel="noopener" class="contact-link">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.2c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.4 5.4 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+        github.com/tonmonz
+      </a>
+      <a href="tel:+66934343013" class="contact-link">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.24h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.86a16 16 0 0 0 6.29 6.29l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        093-434-3013
+      </a>
+      <a href="https://instagram.com/pasit_m0nz" target="_blank" rel="noopener" class="contact-link">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".5" fill="currentColor"/></svg>
+        @pasit_m0nz
+      </a>
+      <span class="contact-link" style="cursor:default;">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+        Chatuchak, Bangkok
+      </span>
+    </div>
+    <p class="footer-copy">&copy; 2026 Pasit Boonyinglour. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // ── Custom cursor ──
+    const cursor = document.getElementById('cursor');
+    const ring = document.getElementById('cursor-ring');
+    let mouseX = 0, mouseY = 0;
+    let ringX = 0, ringY = 0;
+
+    document.addEventListener('mousemove', e => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      cursor.style.left = mouseX + 'px';
+      cursor.style.top  = mouseY + 'px';
+    });
+
+    // Ring follows with lerp
+    function animateRing() {
+      ringX += (mouseX - ringX) * 0.12;
+      ringY += (mouseY - ringY) * 0.12;
+      ring.style.left = ringX + 'px';
+      ring.style.top  = ringY + 'px';
+      requestAnimationFrame(animateRing);
+    }
+    animateRing();
+
+    // Hover state on interactive elements
+    document.querySelectorAll('a, button, .project-card').forEach(el => {
+      el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
+      el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
+    });
+
+    // ── Theme toggle ──
+    const html = document.documentElement;
+    const toggleBtn = document.getElementById('themeToggle');
+    const saved = localStorage.getItem('theme') || 'dark';
+    html.setAttribute('data-theme', saved);
+
+    toggleBtn.addEventListener('click', () => {
+      const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      html.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+    });
+
+    // ── Scroll reveal ──
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    reveals.forEach((el, i) => {
+      el.style.transitionDelay = (i % 3) * 0.08 + 's';
+      observer.observe(el);
+    });
+
+    // ── Smooth scroll ──
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const target = document.querySelector(a.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
