@@ -1,20 +1,20 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Pasit Boonyinglour — Software Developer</title>
-  <meta name="description" content="Pasit Boonyinglour — Computer Science student at Kasetsart University. Full-stack developer with experience in React, Next.js, and UI/UX Design. Available for internship 2026." />
-  <meta property="og:title" content="Pasit Boonyinglour — Software Developer" />
-  <meta property="og:description" content="Computer Science student at Kasetsart University. Full-stack developer with experience in React, Next.js, and UI/UX Design. Available for internship 2026." />
+  <title>Pasit Boonyinglour — Software Engineer</title>
+  <meta name="description" content="Pasit Boonyinglour — Software Engineer. Software Engineer Intern at Western Digital, building FixDrive AI, an AI assistant for maintenance technicians. Computer Science, Kasetsart University." />
+  <meta property="og:title" content="Pasit Boonyinglour — Software Engineer" />
+  <meta property="og:description" content="Software Engineer Intern at Western Digital, building FixDrive AI — an AI assistant for maintenance technicians. Open to full-time roles." />
   <meta property="og:image" content="pic/33.png" />
   <meta property="og:type" content="website" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Pasit Boonyinglour — Software Developer" />
-  <meta name="twitter:description" content="Computer Science student at Kasetsart University. Available for internship 2026." />
+  <meta name="twitter:title" content="Pasit Boonyinglour — Software Engineer" />
+  <meta name="twitter:description" content="Software Engineer Intern at Western Digital, building FixDrive AI. Open to full-time roles." />
   <link rel="icon" type="image/png" href="pic/logo.png" />
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500;600&family=Noto+Sans+Thai:wght@400;500;600&display=swap');
 
     *, *::before, *::after {
       box-sizing: border-box;
@@ -24,25 +24,29 @@
 
     /* ── Theme variables ── */
     [data-theme="dark"] {
-      --bg: #0a0a0a;
-      --surface: #111111;
-      --border: #1e1e1e;
-      --text: #e8e4dc;
-      --muted: #888888;
-      --accent: #3ddc84;
-      --nav-bg: rgba(10,10,10,0.85);
-      --cursor-color: #3ddc84;
+      --bg: #080b11;
+      --surface: #0f141c;
+      --border: #1c2430;
+      --text: #e6ebf2;
+      --muted: #8a94a6;
+      --accent: #4aa8ff;
+      --nav-bg: rgba(8,11,17,0.85);
+      --cursor-color: #4aa8ff;
+      --accent-soft: rgba(74,168,255,0.12);
+      --on-accent: #021325;
     }
 
     [data-theme="light"] {
-      --bg: #f5f2ed;
+      --bg: #f3f6fa;
       --surface: #ffffff;
-      --border: #e0dbd3;
-      --text: #1a1814;
-      --muted: #5a5550;
-      --accent: #1a7a45;
-      --nav-bg: rgba(245,242,237,0.85);
-      --cursor-color: #1a7a45;
+      --border: #dbe3ee;
+      --text: #111827;
+      --muted: #4b5563;
+      --accent: #1769d6;
+      --nav-bg: rgba(243,246,250,0.85);
+      --cursor-color: #1769d6;
+      --accent-soft: rgba(23,105,214,0.10);
+      --on-accent: #ffffff;
     }
 
     html { scroll-behavior: smooth; }
@@ -50,7 +54,7 @@
     body {
       background: var(--bg);
       color: var(--text);
-      font-family: 'DM Sans', sans-serif;
+      font-family: 'DM Sans', 'Noto Sans Thai', sans-serif;
       font-size: 17px;
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
@@ -482,23 +486,6 @@
 
     .project-link:hover { opacity: 0.7; }
 
-    .project-card.placeholder {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 380px;
-      border-style: dashed;
-    }
-
-    .placeholder-text {
-      font-family: 'DM Mono', monospace;
-      font-size: 11px;
-      letter-spacing: 0.1em;
-      color: var(--border);
-      text-transform: uppercase;
-      transition: color 0.3s;
-    }
-
     /* ── Experience ── */
     #experience { border-top: 1px solid var(--border); }
 
@@ -573,10 +560,10 @@
       padding: 5px 14px;
       transition: background 0.2s, color 0.2s;
     }
-    .course-toggle:hover { background: var(--accent); color: #fff; }
+    .course-toggle:hover { background: var(--accent); color: var(--on-accent); }
     .course-toggle svg { transition: transform 0.3s; flex-shrink: 0; }
     .course-toggle.open svg { transform: rotate(180deg); }
-    .course-toggle.open { background: var(--accent); color: #fff; }
+    .course-toggle.open { background: var(--accent); color: var(--on-accent); }
 
     .course-dropdown {
       overflow: hidden;
@@ -678,14 +665,6 @@
       margin-bottom: 16px;
       transition: color 0.3s;
     }
-
-    .toolkit-groups {
-      display: flex;
-      flex-direction: column;
-      gap: 24px;
-    }
-
-    .toolkit-group { display: flex; flex-direction: column; gap: 10px; }
 
     .toolkit-pills {
       display: flex;
@@ -841,6 +820,444 @@
     .mobile-menu a:last-child { border-bottom: none; }
     .mobile-menu a:hover { color: var(--accent); }
 
+    /* ── Shared helpers ── */
+    .sr-only {
+      position: absolute;
+      width: 1px; height: 1px;
+      padding: 0; margin: -1px;
+      overflow: hidden;
+      clip: rect(0,0,0,0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    .logo-on-light { display: none; }
+    [data-theme="light"] .logo-on-light { display: inline-block; }
+    [data-theme="light"] .logo-on-dark { display: none; }
+
+    @keyframes blink { 50% { opacity: 0; } }
+
+    /* ── Scroll progress + active nav ── */
+    .scroll-progress {
+      position: absolute;
+      left: 0; bottom: -1px;
+      width: 100%;
+      height: 2px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transform-origin: left;
+      pointer-events: none;
+    }
+
+    .nav-link.active { color: var(--accent); }
+    .nav-link.active::after { width: 100%; }
+
+    /* ── Hero extras ── */
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 32px;
+    }
+
+    .hero-badges .hero-badge { margin-bottom: 0; }
+
+    .badge-logo {
+      height: 11px;
+      width: auto;
+    }
+
+    .hero-typed {
+      font-family: 'DM Mono', monospace;
+      font-size: 15px;
+      letter-spacing: 0.02em;
+      color: var(--muted);
+      margin-bottom: 20px;
+      min-height: 1.6em;
+    }
+
+    #typedText { color: var(--accent); }
+
+    .typed-caret {
+      display: inline-block;
+      width: 8px;
+      height: 1.05em;
+      margin-left: 3px;
+      vertical-align: -2px;
+      background: var(--accent);
+      animation: blink 1s steps(1) infinite;
+    }
+
+    .hero-bio strong {
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    /* ── Featured project card ── */
+    .project-card--featured {
+      border-color: color-mix(in srgb, var(--accent) 45%, var(--border));
+    }
+
+    .project-card--featured .project-title { font-size: 28px; }
+
+    .project-card--featured .project-thumb { background: #07172b; }
+
+    .project-card--featured .project-thumb img { object-fit: contain; }
+
+    .project-card--featured .project-tag { top: auto; bottom: 12px; }
+
+    .fd-thumb { cursor: inherit; }
+
+    .fd-open {
+      background: none;
+      border: none;
+      padding: 0;
+      cursor: inherit;
+    }
+
+    /* ── FixDrive features dialog ── */
+    .fd-dialog {
+      width: min(1040px, calc(100vw - 32px));
+      max-height: calc(100vh - 32px);
+      margin: auto;
+      padding: 28px;
+      background: var(--surface);
+      color: var(--text);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.35);
+    }
+
+    .fd-dialog { cursor: auto; }
+    .fd-dialog button { cursor: pointer; }
+
+    .fd-dialog::backdrop {
+      background: rgba(4,10,20,0.6);
+      backdrop-filter: blur(4px);
+    }
+
+    .fd-dialog-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+
+    .fd-dialog-k {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 4px;
+    }
+
+    .fd-dialog-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      font-weight: 700;
+    }
+
+    .fd-close,
+    .fd-nav {
+      width: 36px; height: 36px;
+      flex-shrink: 0;
+      display: grid;
+      place-items: center;
+      background: none;
+      color: var(--text);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      font-size: 14px;
+      cursor: inherit;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .fd-close:hover,
+    .fd-nav:hover { border-color: var(--accent); color: var(--accent); }
+
+    .fd-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 18px;
+    }
+
+    .fd-tab {
+      font-family: 'DM Mono', monospace;
+      font-size: 12px;
+      letter-spacing: 0.04em;
+      color: var(--text);
+      background: none;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 6px 14px;
+      cursor: inherit;
+      transition: border-color 0.2s, background 0.2s, color 0.2s;
+    }
+
+    .fd-tab:hover { border-color: var(--accent); }
+
+    .fd-tab[aria-selected="true"] {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: var(--on-accent);
+    }
+
+    .fd-shot { margin: 0; }
+
+    .fd-shot img,
+    .fd-shot video {
+      width: 100%;
+      aspect-ratio: 1600 / 940;
+      object-fit: contain;
+      display: block;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: #fff;
+    }
+
+    .fd-shot video { background: #061833; }
+
+    .fd-shot [hidden] { display: none; }
+
+    .fd-shot figcaption {
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--muted);
+      margin-top: 14px;
+      min-height: 3.4em;
+    }
+
+    .fd-dialog-foot {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 8px;
+    }
+
+    .fd-count {
+      font-family: 'DM Mono', monospace;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .fd-sample {
+      margin-left: auto;
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    @media (max-width: 768px) {
+      .fd-dialog { padding: 18px; }
+      .fd-dialog-title { font-size: 22px; }
+      .fd-sample { display: none; }
+    }
+
+    .project-note {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'DM Mono', monospace;
+      font-size: 12px;
+      letter-spacing: 0.04em;
+      color: var(--muted);
+    }
+
+    .project-note svg {
+      width: 13px; height: 13px;
+      flex-shrink: 0;
+      color: var(--accent);
+    }
+
+    /* ── Projects: wide card ── */
+    .project-card--wide {
+      grid-column: 1 / -1;
+      flex-direction: row;
+    }
+
+    .project-card--wide .project-thumb { flex: 0 0 52%; }
+
+    .project-card--wide .project-thumb img {
+      height: 100%;
+      min-height: 320px;
+    }
+
+    .project-card--wide .project-body { padding: 32px; }
+
+    /* ── Experience extras ── */
+    .timeline-item--top { align-items: start; }
+
+    .timeline-logo--wd {
+      width: 80px;
+      height: 80px;
+      object-fit: contain;
+    }
+
+    .now-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 10px;
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      border: 1px solid var(--accent);
+      border-radius: 999px;
+      padding: 2px 10px;
+    }
+
+    .timeline-date { display: flex; flex-direction: column; align-items: flex-start; }
+
+    .timeline-points {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-top: 12px;
+    }
+
+    .timeline-points li {
+      position: relative;
+      padding-left: 18px;
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--muted);
+    }
+
+    .timeline-points li::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0.8em;
+      width: 8px; height: 1px;
+      background: var(--accent);
+    }
+
+    .timeline-points strong {
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .timeline-item .project-stack { margin: 16px 0 0; }
+
+    /* ── 04 / Skills ── */
+    #skills { border-top: 1px solid var(--border); }
+
+    .skills-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      flex-wrap: wrap;
+      gap: 16px 24px;
+      margin-bottom: 40px;
+    }
+
+    .skills-head .section-heading { margin-bottom: 0; }
+
+    .skills-legend {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'DM Mono', monospace;
+      font-size: 12px;
+      letter-spacing: 0.04em;
+      color: var(--muted);
+    }
+
+    .legend-dot,
+    .toolkit-pill.is-prod::before {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+
+    .legend-dot { display: inline-block; }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+
+    .skill-card--wide { grid-column: span 2; }
+
+    .skill-card {
+      background: linear-gradient(180deg, var(--accent-soft), transparent 55%), var(--surface);
+      border: 1px solid var(--accent);
+      padding: 24px;
+    }
+
+    .skill-card .toolkit-label {
+      color: var(--text);
+      font-weight: 500;
+      margin-bottom: 16px;
+    }
+
+    .toolkit-pill.is-prod {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .toolkit-pill.is-prod::before {
+      content: '';
+      flex-shrink: 0;
+    }
+
+    /* ── About facts ── */
+    .facts {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .facts > div {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 16px;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .facts > div:first-child { border-top: 1px solid var(--border); }
+
+    .facts dt {
+      font-family: 'DM Mono', monospace;
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding-top: 2px;
+    }
+
+    .facts dd {
+      font-size: 15px;
+      line-height: 1.6;
+      color: var(--text);
+    }
+
+    @media (max-width: 1080px) {
+      .skills-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        transition-delay: 0s !important;
+      }
+      html { scroll-behavior: auto; }
+    }
+
     /* ── Responsive ── */
     @media (max-width: 768px) {
       body { cursor: auto; }
@@ -860,7 +1277,17 @@
         gap: 40px;
       }
 
-      .hero-photo { width: 100%; height: 260px; }
+      .hero-right { align-self: center; }
+      .hero-photo { width: 240px; height: 240px; }
+
+      .skills-grid { grid-template-columns: 1fr; }
+      .skill-card--wide { grid-column: auto; }
+      .facts > div { grid-template-columns: 1fr; gap: 4px; }
+
+      .project-card--wide { flex-direction: column; }
+      .project-card--wide .project-thumb { flex: none; }
+      .project-card--wide .project-thumb img { height: 280px; min-height: 0; }
+      .project-card--wide .project-body { padding: 24px; }
 
       .projects-grid { grid-template-columns: 1fr; }
 
@@ -894,19 +1321,22 @@
 
   <!-- Mobile menu -->
   <div class="mobile-menu" id="mobileMenu">
-    <a href="#projects" onclick="closeMobileMenu()">Project</a>
+    <a href="#projects" onclick="closeMobileMenu()">Work</a>
     <a href="#experience" onclick="closeMobileMenu()">Experience</a>
+    <a href="#skills" onclick="closeMobileMenu()">Skills</a>
     <a href="#about" onclick="closeMobileMenu()">About</a>
     <a href="#contact" onclick="closeMobileMenu()">Contact</a>
   </div>
 
   <!-- Navbar -->
   <nav>
+    <div class="scroll-progress" id="scrollProgress"></div>
     <a href="#hero" class="nav-name">Pasit.</a>
     <div class="nav-right">
-      <a href="#projects" class="nav-link mag-link">Project</a>
-      <a href="#experience" class="nav-link mag-link">Experience</a>
-      <a href="#about" class="nav-link mag-link">About</a>
+      <a href="#projects" class="nav-link mag-link" data-spy="projects">Work</a>
+      <a href="#experience" class="nav-link mag-link" data-spy="experience">Experience</a>
+      <a href="#skills" class="nav-link mag-link" data-spy="skills">Skills</a>
+      <a href="#about" class="nav-link mag-link" data-spy="about">About</a>
       <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
         <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
@@ -933,16 +1363,27 @@
   <!-- Hero -->
   <section id="hero">
     <div class="hero-left reveal">
-      <div class="hero-badge">
-        <span class="badge-dot"></span>
-        Available for Internship 2026
+      <div class="hero-badges">
+        <div class="hero-badge">
+          <span class="badge-dot"></span>
+          Open to Full-time Roles
+        </div>
+        <div class="hero-badge">
+          <img src="pic/wd-logo-dark.webp" alt="" class="badge-logo logo-on-dark" />
+          <img src="pic/wd-logo.webp" alt="" class="badge-logo logo-on-light" />
+          Currently @ Western Digital
+        </div>
       </div>
       <p class="hero-greeting">Hello, I'm Pasit Boonyinglour</p>
       <h1 class="hero-heading">
-        Software<br><em>Developer</em>
+        Software<br><em>Engineer</em>
       </h1>
+      <p class="hero-typed">
+        <span class="sr-only">I build RAG and LLM systems, multimodal AI pipelines, full-stack web apps and data-driven evaluation.</span>
+        <span aria-hidden="true">I build <span id="typedText">RAG &amp; LLM systems</span><span class="typed-caret"></span></span>
+      </p>
       <p class="hero-bio">
-        A motivated Computer Science student with internship experience in frontend development and a strong foundation in Full-stack, UI/UX Design, and Software Testing.
+        Software Engineer Intern at <strong>Western Digital</strong>, building AI tools that help maintenance technicians find answers faster. Computer Science student at Kasetsart University.
       </p>
       <div class="hero-buttons">
         <a href="#projects" class="btn-primary">Explore Works</a>
@@ -962,6 +1403,37 @@
   <section id="projects">
     <p class="section-label reveal"><span class="label-num">01</span><span class="label-text"> / Projects &amp; Works</span></p>
     <div class="projects-grid">
+
+      <div class="project-card project-card--wide project-card--featured reveal">
+        <div class="project-thumb fd-thumb" data-fd-open role="button" tabindex="0" aria-label="View FixDrive AI app features">
+          <img src="pic/fixdrive-opening.webp" alt="FixDrive AI — Smart AI Maintenance Assistant Chatbot: files, machine alerts and knowledge in, answers out" />
+          <span class="project-tag">Featured · WD Internship</span>
+        </div>
+        <div class="project-body">
+          <h3 class="project-title">FixDrive AI</h3>
+          <p class="project-desc">
+            An AI maintenance assistant I built during my internship at Western Digital. Technicians ask in Thai or English and get step-by-step answers from the plant's manuals, pictures and training videos — each answer links back to its source documents. It also sends machine-down alerts to the right team and gives admins a simple way to manage the knowledge base.
+          </p>
+          <div class="project-stack">
+            <span class="stack-pill">Python</span>
+            <span class="stack-pill">FastAPI</span>
+            <span class="stack-pill">RAG</span>
+            <span class="stack-pill">LLM</span>
+            <span class="stack-pill">Next.js</span>
+            <span class="stack-pill">TypeScript</span>
+            <span class="stack-pill">PostgreSQL</span>
+            <span class="stack-pill">Qdrant</span>
+          </div>
+          <div style="display:flex; gap:16px; flex-wrap:wrap; align-items:center; margin-top:auto;">
+            <button type="button" class="project-link fd-open" data-fd-open>View app features ↗</button>
+            <span class="project-note">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              Internal project · code is private
+            </span>
+          </div>
+        </div>
+      </div>
+
 
       <div class="project-card reveal">
         <div class="project-thumb">
@@ -1058,7 +1530,7 @@
         </div>
       </div>
 
-      <div class="project-card reveal">
+      <div class="project-card project-card--wide reveal">
         <div class="project-thumb">
           <img src="pic/agent.png" alt="AI Agent Project" />
           <span class="project-tag" style="background: #f59e0b; color: #000;">In Development</span>
@@ -1078,24 +1550,87 @@
         </div>
       </div>
 
-      <div class="project-card placeholder reveal">
-        <span class="placeholder-text">Coming Soon</span>
-      </div>
-
     </div>
   </section>
+
+  <!-- FixDrive AI features dialog -->
+  <dialog class="fd-dialog" id="fdDialog" aria-labelledby="fdDialogTitle">
+    <div class="fd-dialog-head">
+      <div>
+        <p class="fd-dialog-k">FixDrive AI · App features</p>
+        <h3 class="fd-dialog-title" id="fdDialogTitle">Overview Film</h3>
+      </div>
+      <button type="button" class="fd-close" aria-label="Close" data-fd-close>✕</button>
+    </div>
+    <div class="fd-tabs" role="tablist">
+      <button type="button" role="tab" class="fd-tab" aria-selected="true">Overview Film</button>
+      <button type="button" role="tab" class="fd-tab" aria-selected="false">AI Chat</button>
+      <button type="button" role="tab" class="fd-tab" aria-selected="false">Machine Alerts</button>
+      <button type="button" role="tab" class="fd-tab" aria-selected="false">Spare Parts</button>
+      <button type="button" role="tab" class="fd-tab" aria-selected="false">Knowledge Base</button>
+    </div>
+    <figure class="fd-shot">
+      <video id="fdFilm" controls playsinline preload="none" poster="pic/fd-film-poster.webp" title="FixDrive AI film — voice by elevenlabs.io" hidden>
+        <source src="video/fixdrive-ai-film-voice.mp4" type="video/mp4" />
+        <track kind="subtitles" src="video/fixdrive-ai-film.en.vtt" srclang="en" label="English" default />
+      </video>
+      <img id="fdShotImg" src="pic/fd-chat.webp" alt="" />
+      <figcaption id="fdShotDesc"></figcaption>
+    </figure>
+    <div class="fd-dialog-foot">
+      <button type="button" class="fd-nav" data-fd-step="-1" aria-label="Previous feature">←</button>
+      <span class="fd-count" id="fdCount">1 / 5</span>
+      <button type="button" class="fd-nav" data-fd-step="1" aria-label="Next feature">→</button>
+      <span class="fd-sample">Sample data · screens from the app prototype</span>
+    </div>
+  </dialog>
 
   <!-- 02 / Experience -->
   <section id="experience">
     <p class="section-label reveal"><span class="label-num">02</span><span class="label-text"> / Experience</span></p>
     <div class="timeline">
+      <div class="timeline-item timeline-item--top reveal">
+        <div>
+          <img src="pic/wd-logo-dark.webp" alt="Western Digital" class="timeline-logo--wd logo-on-dark" />
+          <img src="pic/wd-logo.webp" alt="Western Digital" class="timeline-logo--wd logo-on-light" />
+        </div>
+        <span class="timeline-date">Jul 2026 — Dec 2026<span class="now-pill"><span class="badge-dot"></span>Current</span></span>
+        <div>
+          <p class="timeline-role">Software Engineer Intern</p>
+          <p class="timeline-company">Western Digital Storage Technologies (Thailand) Ltd.</p>
+          <ul class="timeline-points">
+            <li>Built <strong>FixDrive AI</strong>, an AI assistant that helps maintenance technicians find answers in manuals, pictures and training videos, in Thai or English.</li>
+            <li>Developed both the AI service (Python) and the web app (Next.js): chat, knowledge management and machine-down alerts for teams.</li>
+            <li>Tested and compared AI models and search settings to choose the most accurate setup for production.</li>
+            <li>Deployed it with CI/CD and presented the results to management.</li>
+          </ul>
+          <div class="project-stack">
+            <span class="stack-pill">Python</span>
+            <span class="stack-pill">FastAPI</span>
+            <span class="stack-pill">RAG</span>
+            <span class="stack-pill">LLM</span>
+            <span class="stack-pill">Next.js</span>
+            <span class="stack-pill">PostgreSQL</span>
+            <span class="stack-pill">Docker</span>
+          </div>
+        </div>
+      </div>
+      <div class="timeline-item reveal">
+        <img src="pic/ocs.png" alt="OCS" class="timeline-logo" />
+        <span class="timeline-date">Apr 2025 — Jun 2025</span>
+        <div>
+          <p class="timeline-role">Frontend Developer Intern</p>
+          <p class="timeline-company">Office of Computer Services (OCS), Kasetsart University</p>
+          <p class="timeline-desc">Developed responsive and modern UI components for the KU Club Web-App.</p>
+        </div>
+      </div>
       <div class="timeline-item reveal">
         <img src="pic/kasetsartlogo.png" alt="Kasetsart University" class="timeline-logo" />
         <span class="timeline-date">2023 — Present</span>
         <div>
           <p class="timeline-role">Computer Science Student</p>
           <p class="timeline-company">Kasetsart University</p>
-          <p class="timeline-desc">Currently entering 4th year — Faculty of Science, Bachelor of Science in Computer Science.</p>
+          <p class="timeline-desc">4th-year student — Faculty of Science, Bachelor of Science in Computer Science.</p>
           <button class="course-toggle" onclick="this.classList.toggle('open'); this.nextElementSibling.classList.toggle('open')">
             Relevant Courses
             <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
@@ -1162,94 +1697,125 @@
           </div>
         </div>
       </div>
-      <div class="timeline-item reveal">
-        <img src="pic/ocs.png" alt="OCS" class="timeline-logo" />
-        <span class="timeline-date">Apr 2025 — Jun 2025</span>
-        <div>
-          <p class="timeline-role">Frontend Developer Intern</p>
-          <p class="timeline-company">Office of Computer Services (OCS), Kasetsart University</p>
-          <p class="timeline-desc">Developed responsive and modern UI components for the KU Club Web-App.</p>
+    </div>
+  </section>
+
+  <!-- 04 / Skills -->
+  <section id="skills">
+    <p class="section-label reveal"><span class="label-num">03</span><span class="label-text"> / Tech Skills</span></p>
+    <div class="skills-head reveal">
+      <h2 class="section-heading">My <em>Toolkit.</em></h2>
+      <p class="skills-legend"><span class="legend-dot"></span>Used in production at Western Digital</p>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-card skill-card--wide reveal">
+        <p class="toolkit-label">AI / LLM</p>
+        <div class="toolkit-pills">
+          <span class="toolkit-pill is-prod">RAG</span>
+          <span class="toolkit-pill is-prod">LLM Integration</span>
+          <span class="toolkit-pill is-prod">Prompt Engineering</span>
+          <span class="toolkit-pill is-prod">Embeddings</span>
+          <span class="toolkit-pill is-prod">Vector Search</span>
+          <span class="toolkit-pill is-prod">Hybrid Search (BM25)</span>
+          <span class="toolkit-pill is-prod">Reranking</span>
+          <span class="toolkit-pill is-prod">OCR</span>
+          <span class="toolkit-pill is-prod">Vision-Language Models</span>
+          <span class="toolkit-pill is-prod">Speech-to-Text (Whisper)</span>
+          <span class="toolkit-pill is-prod">LLM Evaluation</span>
+          <span class="toolkit-pill is-prod">Hugging Face</span>
+          <span class="toolkit-pill is-prod">PyThaiNLP</span>
+          <span class="toolkit-pill is-prod">NumPy</span>
         </div>
       </div>
-      <div class="timeline-item reveal">
-        <span></span>
-        <span class="timeline-date">2026</span>
-        <div>
-          <p class="timeline-role">Internship — Open to Opportunities</p>
-          <p class="timeline-desc">Looking for Backend / Full-Stack / System Analyst / Business Analyst (BA) / Software Tester / QA Engineer roles</p>
+      <div class="skill-card reveal">
+        <p class="toolkit-label">Backend</p>
+        <div class="toolkit-pills">
+          <span class="toolkit-pill is-prod">Python</span>
+          <span class="toolkit-pill is-prod">FastAPI</span>
+          <span class="toolkit-pill is-prod">Node.js</span>
+          <span class="toolkit-pill is-prod">REST API</span>
+          <span class="toolkit-pill is-prod">SSE Streaming</span>
+          <span class="toolkit-pill">Java</span>
+          <span class="toolkit-pill">Go</span>
+          <span class="toolkit-pill">PHP</span>
+          <span class="toolkit-pill">C/C++</span>
+          <span class="toolkit-pill">OOP</span>
+        </div>
+      </div>
+      <div class="skill-card reveal">
+        <p class="toolkit-label">Frontend</p>
+        <div class="toolkit-pills">
+          <span class="toolkit-pill is-prod">Next.js</span>
+          <span class="toolkit-pill is-prod">React</span>
+          <span class="toolkit-pill is-prod">TypeScript</span>
+          <span class="toolkit-pill is-prod">TanStack Query</span>
+          <span class="toolkit-pill">JavaScript</span>
+          <span class="toolkit-pill">Tailwind</span>
+          <span class="toolkit-pill">HTML/CSS</span>
+        </div>
+      </div>
+      <div class="skill-card reveal">
+        <p class="toolkit-label">Data / Databases</p>
+        <div class="toolkit-pills">
+          <span class="toolkit-pill is-prod">PostgreSQL</span>
+          <span class="toolkit-pill is-prod">SQL</span>
+          <span class="toolkit-pill is-prod">MySQL / MariaDB</span>
+          <span class="toolkit-pill is-prod">SQLite</span>
+          <span class="toolkit-pill is-prod">Qdrant</span>
+          <span class="toolkit-pill">Supabase</span>
+          <span class="toolkit-pill">pgAdmin 4</span>
+        </div>
+      </div>
+      <div class="skill-card reveal">
+        <p class="toolkit-label">DevOps / Tools</p>
+        <div class="toolkit-pills">
+          <span class="toolkit-pill is-prod">Docker</span>
+          <span class="toolkit-pill is-prod">Jenkins CI/CD</span>
+          <span class="toolkit-pill is-prod">Git</span>
+          <span class="toolkit-pill is-prod">Bitbucket</span>
+          <span class="toolkit-pill is-prod">PM2</span>
+          <span class="toolkit-pill is-prod">Shell</span>
+          <span class="toolkit-pill">GitHub</span>
+          <span class="toolkit-pill">Postman</span>
+          <span class="toolkit-pill">Swagger</span>
+          <span class="toolkit-pill">Jira</span>
+        </div>
+      </div>
+      <div class="skill-card skill-card--wide reveal">
+        <p class="toolkit-label">Software Engineering</p>
+        <div class="toolkit-pills">
+          <span class="toolkit-pill is-prod">Software Testing</span>
+          <span class="toolkit-pill is-prod">pytest</span>
+          <span class="toolkit-pill is-prod">RBAC &amp; SAML SSO</span>
+          <span class="toolkit-pill">JUnit</span>
+          <span class="toolkit-pill">System Analysis</span>
+          <span class="toolkit-pill">MVC</span>
+          <span class="toolkit-pill">UI/UX Design</span>
+          <span class="toolkit-pill">Figma</span>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 03 / About -->
+  <!-- 05 / About -->
   <section id="about">
     <div class="about-left reveal">
-      <p class="section-label"><span class="label-num">03</span><span class="label-text"> / About Me</span></p>
+      <p class="section-label"><span class="label-num">04</span><span class="label-text"> / About Me</span></p>
       <h2 class="about-heading">
         Who I <em>Am.</em>
       </h2>
       <p class="about-bio">
-        A motivated Computer Science student with practical internship experience in frontend development and a strong foundation in Full-stack, UI/UX Design, System Analysis and Software Testing. Eager to apply analytical and technical skills to develop scalable and user-centric software solutions.
+        I'm a final-year Computer Science student at Kasetsart University and a Software Engineer Intern at Western Digital. I enjoy the part of engineering where AI meets real operations — taking a model out of the notebook, turning it into something a technician on the production floor can trust, and then proving with data that it works. Before WD I built frontends at Kasetsart's Office of Computer Services, and I still care about clean UI, system design and testing.
       </p>
     </div>
     <div class="about-right reveal">
-      <p class="toolkit-label" style="font-size:15px; font-weight:700; color:var(--accent); margin-bottom:24px; letter-spacing:0.16em;">Tech Skills</p>
-      <div class="toolkit-groups">
-        <div class="toolkit-group">
-          <p class="toolkit-label">Frontend</p>
-          <div class="toolkit-pills">
-            <span class="toolkit-pill">React</span>
-            <span class="toolkit-pill">Next.js</span>
-            <span class="toolkit-pill">TypeScript</span>
-            <span class="toolkit-pill">JavaScript</span>
-            <span class="toolkit-pill">HTML/CSS</span>
-            <span class="toolkit-pill">Tailwind</span>
-          </div>
-        </div>
-        <div class="toolkit-group">
-          <p class="toolkit-label">Backend</p>
-          <div class="toolkit-pills">
-            <span class="toolkit-pill">Python</span>
-            <span class="toolkit-pill">Java</span>
-            <span class="toolkit-pill">Node.js</span>
-            <span class="toolkit-pill">Go</span>
-            <span class="toolkit-pill">PHP</span>
-            <span class="toolkit-pill">C/C++</span>
-            <span class="toolkit-pill">REST API</span>
-            <span class="toolkit-pill">OOP</span>
-          </div>
-        </div>
-        <div class="toolkit-group">
-          <p class="toolkit-label">Database / Cloud</p>
-          <div class="toolkit-pills">
-            <span class="toolkit-pill">PostgreSQL</span>
-            <span class="toolkit-pill">MySQL</span>
-            <span class="toolkit-pill">Supabase</span>
-            <span class="toolkit-pill">pgAdmin 4</span>
-          </div>
-        </div>
-        <div class="toolkit-group">
-          <p class="toolkit-label">Tools</p>
-          <div class="toolkit-pills">
-            <span class="toolkit-pill">Git/GitHub</span>
-            <span class="toolkit-pill">Docker</span>
-            <span class="toolkit-pill">Postman</span>
-            <span class="toolkit-pill">Swagger</span>
-            <span class="toolkit-pill">Shell</span>
-          </div>
-        </div>
-        <div class="toolkit-group">
-          <p class="toolkit-label">Software Engineering</p>
-          <div class="toolkit-pills">
-            <span class="toolkit-pill">Software Testing</span>
-            <span class="toolkit-pill">System Analysis</span>
-            <span class="toolkit-pill">MVC</span>
-            <span class="toolkit-pill">Figma</span>
-            <span class="toolkit-pill">JUnit</span>
-          </div>
-        </div>
-      </div>
+      <dl class="facts">
+        <div><dt>Currently</dt><dd>Software Engineer Intern · Western Digital</dd></div>
+        <div><dt>Education</dt><dd>B.Sc. Computer Science · Kasetsart University</dd></div>
+        <div><dt>Focus</dt><dd>RAG &amp; LLM systems · data-driven evaluation · full-stack web</dd></div>
+        <div><dt>Looking for</dt><dd>Full-time roles in AI, Data Science &amp; Software Engineering</dd></div>
+        <div><dt>Location</dt><dd>Bangkok, Thailand</dd></div>
+      </dl>
     </div>
   </section>
 
@@ -1284,6 +1850,9 @@
   </footer>
 
   <script>
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const sleep = ms => new Promise(resolve => setTimeout(resolve, reduceMotion ? 0 : ms));
+
     // ── Custom cursor ──
     const cursor = document.getElementById('cursor');
     const ring = document.getElementById('cursor-ring');
@@ -1316,7 +1885,7 @@
     // ── Theme toggle ──
     const html = document.documentElement;
     const toggleBtn = document.getElementById('themeToggle');
-    const saved = localStorage.getItem('theme') || 'dark';
+    const saved = localStorage.getItem('theme') || 'light';
     html.setAttribute('data-theme', saved);
 
     toggleBtn.addEventListener('click', () => {
@@ -1359,10 +1928,109 @@
         const target = document.querySelector(a.getAttribute('href'));
         if (target) {
           e.preventDefault();
-          target.scrollIntoView({ behavior: 'smooth' });
+          target.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth' });
         }
       });
     });
+
+    // ── Scroll progress + active nav link ──
+    const progress = document.getElementById('scrollProgress');
+    const spyLinks = [...document.querySelectorAll('.nav-link[data-spy]')];
+    const spyTargets = spyLinks.flatMap(link =>
+      link.dataset.spy.split(' ').map(id => [document.getElementById(id), link])
+    );
+    let scrollQueued = false;
+
+    function onScroll() {
+      const doc = document.documentElement;
+      const max = doc.scrollHeight - doc.clientHeight;
+      progress.style.transform = `scaleX(${max > 0 ? doc.scrollTop / max : 0})`;
+      let active = null;
+      for (const [section, link] of spyTargets) {
+        if (section.getBoundingClientRect().top <= 120) active = link;
+      }
+      spyLinks.forEach(link => link.classList.toggle('active', link === active));
+      scrollQueued = false;
+    }
+
+    window.addEventListener('scroll', () => {
+      if (!scrollQueued) {
+        scrollQueued = true;
+        requestAnimationFrame(onScroll);
+      }
+    }, { passive: true });
+    onScroll();
+
+    // ── FixDrive AI features dialog ──
+    const fdDialog = document.getElementById('fdDialog');
+    const fdTabs = [...fdDialog.querySelectorAll('.fd-tab')];
+    const fdFilm = document.getElementById('fdFilm');
+    const fdImg = document.getElementById('fdShotImg');
+    const fdShots = [
+      { video: true, desc: 'A short motion-graphics film I made to introduce FixDrive AI and its features to the team. Voice-over by elevenlabs.io · subtitles via CC.' },
+      { img: 'pic/fd-chat.webp', alt: 'FixDrive AI chat comparing two buy-off procedures as a table', desc: 'Ask in Thai or English and get a clear answer — steps, tables or comparisons — with links to the source documents.' },
+      { img: 'pic/fd-alerts.webp', alt: 'Machine-down alert with recommended recovery steps and a buy-off checklist', desc: 'When a machine goes down, the owning team gets an alert with recommended recovery steps and a buy-off checklist.' },
+      { img: 'pic/fd-parts.webp', alt: 'Spare part identified from a photo with part number, stock and location', desc: 'Snap a photo or type a part number to find the spare part, its stock level and where it is stored.' },
+      { img: 'pic/fd-knowledge.webp', alt: 'Admin knowledge base page with uploaded files ready for AI', desc: 'Admins upload manuals, spreadsheets, slides and videos once — the assistant can answer from them right away.' },
+    ];
+    let fdIndex = 0;
+
+    function showFd(i) {
+      fdIndex = (i + fdShots.length) % fdShots.length;
+      const shot = fdShots[fdIndex];
+      fdFilm.hidden = !shot.video;
+      fdImg.hidden = !!shot.video;
+      if (!shot.video) {
+        fdFilm.pause();
+        fdImg.src = shot.img;
+        fdImg.alt = shot.alt;
+      }
+      document.getElementById('fdShotDesc').textContent = shot.desc;
+      document.getElementById('fdDialogTitle').textContent = fdTabs[fdIndex].textContent;
+      document.getElementById('fdCount').textContent = `${fdIndex + 1} / ${fdShots.length}`;
+      fdTabs.forEach((t, j) => t.setAttribute('aria-selected', String(j === fdIndex)));
+    }
+
+    document.querySelectorAll('[data-fd-open]').forEach(el => {
+      const open = () => { showFd(0); fdDialog.showModal(); };
+      el.addEventListener('click', open);
+      el.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(); } });
+    });
+    fdTabs.forEach((t, i) => t.addEventListener('click', () => showFd(i)));
+    fdDialog.querySelectorAll('[data-fd-step]').forEach(b => b.addEventListener('click', () => showFd(fdIndex + Number(b.dataset.fdStep))));
+    fdDialog.querySelector('[data-fd-close]').addEventListener('click', () => fdDialog.close());
+    fdDialog.addEventListener('click', e => {
+      const r = fdDialog.getBoundingClientRect();
+      if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) fdDialog.close();
+    });
+    fdDialog.addEventListener('keydown', e => {
+      if (e.key === 'ArrowRight') showFd(fdIndex + 1);
+      if (e.key === 'ArrowLeft') showFd(fdIndex - 1);
+    });
+    fdDialog.addEventListener('close', () => fdFilm.pause());
+    fdShots.forEach(s => { if (s.img) new Image().src = s.img; });
+
+    // ── Typed roles ──
+    const typedEl = document.getElementById('typedText');
+    const roles = ['RAG & LLM systems', 'multimodal AI pipelines', 'full-stack web apps', 'data-driven evaluation'];
+
+    if (!reduceMotion) {
+      (async () => {
+        for (let r = 0; ; r = (r + 1) % roles.length) {
+          await sleep(2400);
+          for (let i = roles[r].length; i >= 0; i--) {
+            typedEl.textContent = roles[r].slice(0, i);
+            await sleep(26);
+          }
+          const next = roles[(r + 1) % roles.length];
+          for (let i = 1; i <= next.length; i++) {
+            typedEl.textContent = next.slice(0, i);
+            await sleep(55);
+          }
+        }
+      })();
+    }
+
   </script>
 
 </body>
