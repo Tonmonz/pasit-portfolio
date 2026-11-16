@@ -913,6 +913,114 @@
 
     .fd-thumb { cursor: inherit; }
 
+    /* FixDrive highlight: Innovation Day */
+    .project-card--featured { flex-wrap: wrap; }
+
+    .fd-spotlight {
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1.15fr 1fr 1fr;
+      gap: 24px;
+      align-items: center;
+      padding: 28px 32px 32px;
+      border-top: 1px solid color-mix(in srgb, var(--accent) 30%, var(--border));
+      background: linear-gradient(180deg, var(--accent-soft), transparent 85%);
+    }
+
+    .fd-spot-k {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+
+    .fd-spot-k svg { width: 13px; height: 13px; }
+
+    .fd-spot-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      font-weight: 700;
+      line-height: 1.25;
+      color: var(--text);
+      margin-bottom: 10px;
+    }
+
+    .fd-spot-title em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .fd-spot-desc {
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--muted);
+    }
+
+    .fd-spot-desc strong {
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .fd-photo { margin: 0; }
+
+    .fd-photo button {
+      display: block;
+      width: 100%;
+      padding: 0;
+      background: none;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      overflow: hidden;
+      cursor: inherit;
+    }
+
+    .fd-photo img {
+      width: 100%;
+      aspect-ratio: 3 / 2;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s cubic-bezier(0.4,0,0.2,1);
+    }
+
+    .fd-photo button:hover img { transform: scale(1.04); }
+
+    .fd-photo figcaption {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.03em;
+      color: var(--muted);
+      margin-top: 8px;
+    }
+
+    .photo-dialog { width: min(980px, calc(100vw - 32px)); }
+
+    .photo-full {
+      width: 100%;
+      max-height: calc(100vh - 170px);
+      object-fit: contain;
+      display: block;
+      border-radius: 8px;
+      background: #000;
+    }
+
+    @media (max-width: 1080px) {
+      .fd-spotlight { grid-template-columns: 1fr 1fr; }
+      .fd-spot-text { grid-column: 1 / -1; }
+    }
+
+    @media (max-width: 768px) {
+      .fd-spotlight { padding: 22px 24px 24px; gap: 16px; }
+    }
+
+    @media (max-width: 480px) {
+      .fd-spotlight { grid-template-columns: 1fr; }
+    }
+
     .fd-open {
       background: none;
       border: none;
@@ -1432,6 +1540,25 @@
             </span>
           </div>
         </div>
+        <div class="fd-spotlight">
+          <div class="fd-spot-text">
+            <p class="fd-spot-k"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>Highlight</p>
+            <h4 class="fd-spot-title">Presented at WD Elevate<br><em>Innovation Day</em></h4>
+            <p class="fd-spot-desc">I presented FixDrive AI on stage, and it drew strong interest from the audience. Afterwards, <strong>Senior Director Narongsak Khosee</strong> invited me for a one-on-one conversation to learn how I built it.</p>
+          </div>
+          <figure class="fd-photo">
+            <button type="button" data-photo="On stage at WD Elevate · Innovation Day">
+              <img src="pic/elevate-stage.webp" alt="Pasit presenting FixDrive AI on stage at WD Elevate · Innovation Day" loading="lazy" />
+            </button>
+            <figcaption>On stage at Innovation Day</figcaption>
+          </figure>
+          <figure class="fd-photo">
+            <button type="button" data-photo="With Senior Director Narongsak Khosee">
+              <img src="pic/elevate-director.webp" alt="Group photo with Senior Director Narongsak Khosee" loading="lazy" style="object-position: center 30%" />
+            </button>
+            <figcaption>With Senior Director Narongsak Khosee</figcaption>
+          </figure>
+        </div>
       </div>
 
 
@@ -1583,6 +1710,18 @@
       <button type="button" class="fd-nav" data-fd-step="1" aria-label="Next feature">→</button>
       <span class="fd-sample">Sample data · screens from the app prototype</span>
     </div>
+  </dialog>
+
+  <!-- Innovation Day photo viewer -->
+  <dialog class="fd-dialog photo-dialog" id="photoDialog" aria-labelledby="photoTitle">
+    <div class="fd-dialog-head">
+      <div>
+        <p class="fd-dialog-k">FixDrive AI · Highlight</p>
+        <h3 class="fd-dialog-title" id="photoTitle"></h3>
+      </div>
+      <button type="button" class="fd-close" aria-label="Close" data-photo-close>✕</button>
+    </div>
+    <img class="photo-full" id="photoImg" alt="" />
   </dialog>
 
   <!-- 02 / Experience -->
@@ -1998,17 +2137,35 @@
     });
     fdTabs.forEach((t, i) => t.addEventListener('click', () => showFd(i)));
     fdDialog.querySelectorAll('[data-fd-step]').forEach(b => b.addEventListener('click', () => showFd(fdIndex + Number(b.dataset.fdStep))));
+    function closeOnBackdrop(dialog) {
+      dialog.addEventListener('click', e => {
+        const r = dialog.getBoundingClientRect();
+        const outside = e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom;
+        if (e.target === dialog && outside) dialog.close();
+      });
+    }
+
     fdDialog.querySelector('[data-fd-close]').addEventListener('click', () => fdDialog.close());
-    fdDialog.addEventListener('click', e => {
-      const r = fdDialog.getBoundingClientRect();
-      if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) fdDialog.close();
-    });
+    closeOnBackdrop(fdDialog);
     fdDialog.addEventListener('keydown', e => {
       if (e.key === 'ArrowRight') showFd(fdIndex + 1);
       if (e.key === 'ArrowLeft') showFd(fdIndex - 1);
     });
     fdDialog.addEventListener('close', () => fdFilm.pause());
     fdShots.forEach(s => { if (s.img) new Image().src = s.img; });
+
+    // ── Innovation Day photo viewer ──
+    const photoDialog = document.getElementById('photoDialog');
+    const photoImg = document.getElementById('photoImg');
+    document.querySelectorAll('[data-photo]').forEach(btn => btn.addEventListener('click', () => {
+      const img = btn.querySelector('img');
+      photoImg.src = img.src;
+      photoImg.alt = img.alt;
+      document.getElementById('photoTitle').textContent = btn.dataset.photo;
+      photoDialog.showModal();
+    }));
+    photoDialog.querySelector('[data-photo-close]').addEventListener('click', () => photoDialog.close());
+    closeOnBackdrop(photoDialog);
 
     // ── Typed roles ──
     const typedEl = document.getElementById('typedText');
