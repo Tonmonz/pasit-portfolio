@@ -1030,7 +1030,7 @@
 
     /* ── FixDrive features dialog ── */
     .fd-dialog {
-      width: min(1040px, calc(100vw - 32px));
+      width: min(1040px, calc(100vw - 32px), max(320px, calc((100vh - 370px) * 1.6 + 56px)));
       max-height: calc(100vh - 32px);
       margin: auto;
       padding: 28px;
@@ -1166,7 +1166,8 @@
     @media (max-width: 768px) {
       .fd-dialog { padding: 18px; }
       .fd-dialog-title { font-size: 22px; }
-      .fd-sample { display: none; }
+      .fd-dialog-foot { flex-wrap: wrap; }
+      .fd-sample { margin-left: 0; width: 100%; }
     }
 
     .project-note {
@@ -1487,7 +1488,7 @@
         Software<br><em>Engineer</em>
       </h1>
       <p class="hero-typed">
-        <span class="sr-only">I build RAG and LLM systems, multimodal AI pipelines, full-stack web apps and data-driven evaluation.</span>
+        <span class="sr-only">I build RAG and LLM systems, computer vision and ML models, multimodal AI pipelines, full-stack web apps and data-driven evaluation.</span>
         <span aria-hidden="true">I build <span id="typedText">RAG &amp; LLM systems</span><span class="typed-caret"></span></span>
       </p>
       <p class="hero-bio">
@@ -1513,7 +1514,7 @@
     <div class="projects-grid">
 
       <div class="project-card project-card--wide project-card--featured reveal">
-        <div class="project-thumb fd-thumb" data-fd-open role="button" tabindex="0" aria-label="View FixDrive AI app features">
+        <div class="project-thumb fd-thumb" data-gallery="fixdrive" role="button" tabindex="0" aria-label="View FixDrive AI app features">
           <img src="pic/fixdrive-opening.webp" alt="FixDrive AI — Smart AI Maintenance Assistant Chatbot: files, machine alerts and knowledge in, answers out" />
           <span class="project-tag">Featured · WD Internship</span>
         </div>
@@ -1533,7 +1534,7 @@
             <span class="stack-pill">Qdrant</span>
           </div>
           <div style="display:flex; gap:16px; flex-wrap:wrap; align-items:center; margin-top:auto;">
-            <button type="button" class="project-link fd-open" data-fd-open>View app features ↗</button>
+            <button type="button" class="project-link fd-open" data-gallery="fixdrive">View app features ↗</button>
             <span class="project-note">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
               Internal project · code is private
@@ -1561,6 +1562,56 @@
         </div>
       </div>
 
+
+      <div class="project-card reveal">
+        <div class="project-thumb fd-thumb" data-gallery="cv" role="button" tabindex="0" aria-label="View Visual Defect Inspection demo screens">
+          <img src="pic/cv-inspect.webp" alt="Visual Defect Inspection demo: a broken bottle flagged as DEFECT with a heatmap over the break" />
+          <span class="project-tag">Computer Vision · Deep Learning</span>
+        </div>
+        <div class="project-body">
+          <h3 class="project-title">Visual Defect Inspection</h3>
+          <p class="project-desc">
+            Finds defects on industrial parts by learning only from good parts, then shows exactly where the defect is with a heatmap. A PatchCore-style anomaly detection model built in PyTorch and tested on the MVTec AD benchmark, where it caught every defective bottle and metal nut. Runs on a laptop CPU with a FastAPI web demo.
+          </p>
+          <div class="project-stack">
+            <span class="stack-pill">Python</span>
+            <span class="stack-pill">PyTorch</span>
+            <span class="stack-pill">Computer Vision</span>
+            <span class="stack-pill">Anomaly Detection</span>
+            <span class="stack-pill">scikit-learn</span>
+            <span class="stack-pill">FastAPI</span>
+          </div>
+          <div style="display:flex; gap:16px; flex-wrap:wrap; align-items:center; margin-top:auto;">
+            <button type="button" class="project-link fd-open" data-gallery="cv">View demo screens ↗</button>
+            <span class="project-note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0 0 18 0V5"/><path d="M3 12a9 3 0 0 0 18 0"/></svg>Public data · MVTec AD</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card reveal">
+        <div class="project-thumb fd-thumb" data-gallery="ml" role="button" tabindex="0" aria-label="View Predictive Maintenance demo screens">
+          <img src="pic/ml-simulator.webp" alt="Predictive Maintenance demo: a 97% failure-risk gauge with physics readouts and the reasons behind the prediction" />
+          <span class="project-tag">Machine Learning · Data Science</span>
+        </div>
+        <div class="project-body">
+          <h3 class="project-title">Predictive Maintenance</h3>
+          <p class="project-desc">
+            Predicts which machine runs are about to fail from six sensor readings, and explains every prediction. Physics-based features such as power and strain made the model clearly better, and it catches most failures with very few false alarms. Includes an interactive risk simulator, a fleet scan for CSV files and a model report.
+          </p>
+          <div class="project-stack">
+            <span class="stack-pill">Python</span>
+            <span class="stack-pill">scikit-learn</span>
+            <span class="stack-pill">pandas</span>
+            <span class="stack-pill">Feature Engineering</span>
+            <span class="stack-pill">Random Forest</span>
+            <span class="stack-pill">FastAPI</span>
+          </div>
+          <div style="display:flex; gap:16px; flex-wrap:wrap; align-items:center; margin-top:auto;">
+            <button type="button" class="project-link fd-open" data-gallery="ml">View demo screens ↗</button>
+            <span class="project-note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0 0 18 0V5"/><path d="M3 12a9 3 0 0 0 18 0"/></svg>Public data · AI4I 2020</span>
+          </div>
+        </div>
+      </div>
 
       <div class="project-card reveal">
         <div class="project-thumb">
@@ -1680,22 +1731,16 @@
     </div>
   </section>
 
-  <!-- FixDrive AI features dialog -->
+  <!-- Project gallery dialog (FixDrive AI, Visual Defect Inspection, Predictive Maintenance) -->
   <dialog class="fd-dialog" id="fdDialog" aria-labelledby="fdDialogTitle">
     <div class="fd-dialog-head">
       <div>
-        <p class="fd-dialog-k">FixDrive AI · App features</p>
+        <p class="fd-dialog-k" id="fdKicker">FixDrive AI · App features</p>
         <h3 class="fd-dialog-title" id="fdDialogTitle">Overview Film</h3>
       </div>
       <button type="button" class="fd-close" aria-label="Close" data-fd-close>✕</button>
     </div>
-    <div class="fd-tabs" role="tablist">
-      <button type="button" role="tab" class="fd-tab" aria-selected="true">Overview Film</button>
-      <button type="button" role="tab" class="fd-tab" aria-selected="false">AI Chat</button>
-      <button type="button" role="tab" class="fd-tab" aria-selected="false">Machine Alerts</button>
-      <button type="button" role="tab" class="fd-tab" aria-selected="false">Spare Parts</button>
-      <button type="button" role="tab" class="fd-tab" aria-selected="false">Knowledge Base</button>
-    </div>
+    <div class="fd-tabs" role="tablist" id="fdTabs"></div>
     <figure class="fd-shot">
       <video id="fdFilm" controls playsinline preload="none" poster="pic/fd-film-poster.webp" title="FixDrive AI film — voice by elevenlabs.io" hidden>
         <source src="video/fixdrive-ai-film-voice.mp4" type="video/mp4" />
@@ -1705,10 +1750,10 @@
       <figcaption id="fdShotDesc"></figcaption>
     </figure>
     <div class="fd-dialog-foot">
-      <button type="button" class="fd-nav" data-fd-step="-1" aria-label="Previous feature">←</button>
+      <button type="button" class="fd-nav" data-fd-step="-1" aria-label="Previous screen">←</button>
       <span class="fd-count" id="fdCount">1 / 5</span>
-      <button type="button" class="fd-nav" data-fd-step="1" aria-label="Next feature">→</button>
-      <span class="fd-sample">Sample data · screens from the app prototype</span>
+      <button type="button" class="fd-nav" data-fd-step="1" aria-label="Next screen">→</button>
+      <span class="fd-sample" id="fdNote">Sample data · screens from the app prototype</span>
     </div>
   </dialog>
 
@@ -1848,7 +1893,7 @@
     </div>
     <div class="skills-grid">
       <div class="skill-card skill-card--wide reveal">
-        <p class="toolkit-label">AI / LLM</p>
+        <p class="toolkit-label">AI / ML</p>
         <div class="toolkit-pills">
           <span class="toolkit-pill is-prod">RAG</span>
           <span class="toolkit-pill is-prod">LLM Integration</span>
@@ -1864,6 +1909,12 @@
           <span class="toolkit-pill is-prod">Hugging Face</span>
           <span class="toolkit-pill is-prod">PyThaiNLP</span>
           <span class="toolkit-pill is-prod">NumPy</span>
+          <span class="toolkit-pill">Machine Learning</span>
+          <span class="toolkit-pill">Computer Vision</span>
+          <span class="toolkit-pill">Anomaly Detection</span>
+          <span class="toolkit-pill">PyTorch</span>
+          <span class="toolkit-pill">scikit-learn</span>
+          <span class="toolkit-pill">Feature Engineering</span>
         </div>
       </div>
       <div class="skill-card reveal">
@@ -1903,6 +1954,8 @@
           <span class="toolkit-pill is-prod">Qdrant</span>
           <span class="toolkit-pill">Supabase</span>
           <span class="toolkit-pill">pgAdmin 4</span>
+          <span class="toolkit-pill">pandas</span>
+          <span class="toolkit-pill">Matplotlib</span>
         </div>
       </div>
       <div class="skill-card reveal">
@@ -2100,18 +2153,47 @@
     }, { passive: true });
     onScroll();
 
-    // ── FixDrive AI features dialog ──
+    // ── Project galleries (FixDrive AI, Visual Defect Inspection, Predictive Maintenance) ──
     const fdDialog = document.getElementById('fdDialog');
-    const fdTabs = [...fdDialog.querySelectorAll('.fd-tab')];
+    const fdTabsEl = document.getElementById('fdTabs');
     const fdFilm = document.getElementById('fdFilm');
     const fdImg = document.getElementById('fdShotImg');
-    const fdShots = [
-      { video: true, desc: 'A short motion-graphics film I made to introduce FixDrive AI and its features to the team. Voice-over by elevenlabs.io · subtitles via CC.' },
-      { img: 'pic/fd-chat.webp', alt: 'FixDrive AI chat comparing two buy-off procedures as a table', desc: 'Ask in Thai or English and get a clear answer — steps, tables or comparisons — with links to the source documents.' },
-      { img: 'pic/fd-alerts.webp', alt: 'Machine-down alert with recommended recovery steps and a buy-off checklist', desc: 'When a machine goes down, the owning team gets an alert with recommended recovery steps and a buy-off checklist.' },
-      { img: 'pic/fd-parts.webp', alt: 'Spare part identified from a photo with part number, stock and location', desc: 'Snap a photo or type a part number to find the spare part, its stock level and where it is stored.' },
-      { img: 'pic/fd-knowledge.webp', alt: 'Admin knowledge base page with uploaded files ready for AI', desc: 'Admins upload manuals, spreadsheets, slides and videos once — the assistant can answer from them right away.' },
-    ];
+    const GALLERIES = {
+      fixdrive: {
+        kicker: 'FixDrive AI · App features',
+        note: 'Sample data · screens from the app prototype',
+        ratio: '1600 / 940',
+        shots: [
+          { tab: 'Overview Film', video: true, desc: 'A short motion-graphics film I made to introduce FixDrive AI and its features to the team. Voice-over by elevenlabs.io · subtitles via CC.' },
+          { tab: 'AI Chat', img: 'pic/fd-chat.webp', alt: 'FixDrive AI chat comparing two buy-off procedures as a table', desc: 'Ask in Thai or English and get a clear answer — steps, tables or comparisons — with links to the source documents.' },
+          { tab: 'Machine Alerts', img: 'pic/fd-alerts.webp', alt: 'Machine-down alert with recommended recovery steps and a buy-off checklist', desc: 'When a machine goes down, the owning team gets an alert with recommended recovery steps and a buy-off checklist.' },
+          { tab: 'Spare Parts', img: 'pic/fd-parts.webp', alt: 'Spare part identified from a photo with part number, stock and location', desc: 'Snap a photo or type a part number to find the spare part, its stock level and where it is stored.' },
+          { tab: 'Knowledge Base', img: 'pic/fd-knowledge.webp', alt: 'Admin knowledge base page with uploaded files ready for AI', desc: 'Admins upload manuals, spreadsheets, slides and videos once — the assistant can answer from them right away.' },
+        ],
+      },
+      cv: {
+        kicker: 'Visual Defect Inspection · Demo',
+        note: 'Images: MVTec AD dataset (CC BY-NC-SA 4.0)',
+        ratio: '1600 / 1000',
+        shots: [
+          { tab: 'Inspect', img: 'pic/cv-inspect.webp', alt: 'A broken bottle flagged as DEFECT with a heatmap over the break', desc: 'Pick a test image the model has never seen: it scans the part, says PASS or DEFECT, and the heatmap marks where the defect is.' },
+          { tab: 'Compare', img: 'pic/cv-compare.webp', alt: 'Slider comparing a scratched metal nut with its heatmap', desc: 'Drag the slider to compare the photo with the heatmap — here it finds a small scratch on a metal nut.' },
+          { tab: 'Results', img: 'pic/cv-results.webp', alt: 'Test results for bottle, metal nut and screw', desc: 'Results on images never used for learning, for every product — including where the model still struggles: tiny defects on screws.' },
+        ],
+      },
+      ml: {
+        kicker: 'Predictive Maintenance · Demo',
+        note: 'Data: AI4I 2020 dataset (UCI, CC BY 4.0) · synthetic',
+        ratio: '1600 / 1000',
+        shots: [
+          { tab: 'Simulator', img: 'pic/ml-simulator.webp', alt: 'Failure-risk gauge at 97% with physics readouts, a risk map and the reasons behind the prediction', desc: 'Move the sliders and the failure risk updates instantly, with the physics behind it and the reasons for each prediction.' },
+          { tab: 'Fleet Scan', img: 'pic/ml-fleet.webp', alt: 'Fleet scan of 50 machines sorted by failure risk', desc: 'Upload a CSV to score a whole fleet at once, highest risk first, and download the results.' },
+          { tab: 'Model Report', img: 'pic/ml-report.webp', alt: 'Model report with failures caught, alarm precision, a confusion matrix and the accuracy trap', desc: 'How well the model does on machines it has never seen — and why accuracy alone would be misleading.' },
+        ],
+      },
+    };
+    let fdShots = GALLERIES.fixdrive.shots;
+    let fdTabs = [];
     let fdIndex = 0;
 
     function showFd(i) {
@@ -2125,17 +2207,40 @@
         fdImg.alt = shot.alt;
       }
       document.getElementById('fdShotDesc').textContent = shot.desc;
-      document.getElementById('fdDialogTitle').textContent = fdTabs[fdIndex].textContent;
+      document.getElementById('fdDialogTitle').textContent = shot.tab;
       document.getElementById('fdCount').textContent = `${fdIndex + 1} / ${fdShots.length}`;
       fdTabs.forEach((t, j) => t.setAttribute('aria-selected', String(j === fdIndex)));
     }
 
-    document.querySelectorAll('[data-fd-open]').forEach(el => {
-      const open = () => { showFd(0); fdDialog.showModal(); };
-      el.addEventListener('click', open);
-      el.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(); } });
+    function openGallery(name) {
+      const g = GALLERIES[name];
+      fdShots = g.shots;
+      document.getElementById('fdKicker').textContent = g.kicker;
+      document.getElementById('fdNote').textContent = g.note;
+      fdImg.style.aspectRatio = g.ratio;
+      fdTabs = g.shots.map((shot, i) => {
+        const tab = document.createElement('button');
+        tab.type = 'button';
+        tab.className = 'fd-tab';
+        tab.setAttribute('role', 'tab');
+        tab.textContent = shot.tab;
+        tab.addEventListener('click', () => showFd(i));
+        return tab;
+      });
+      fdTabsEl.replaceChildren(...fdTabs);
+      showFd(0);
+      fdDialog.showModal();
+      g.shots.forEach(shot => { if (shot.img) new Image().src = shot.img; });
+    }
+
+    document.querySelectorAll('[data-gallery]').forEach(el => {
+      el.addEventListener('click', () => openGallery(el.dataset.gallery));
+      if (el.tagName !== 'BUTTON') {
+        el.addEventListener('keydown', e => {
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openGallery(el.dataset.gallery); }
+        });
+      }
     });
-    fdTabs.forEach((t, i) => t.addEventListener('click', () => showFd(i)));
     fdDialog.querySelectorAll('[data-fd-step]').forEach(b => b.addEventListener('click', () => showFd(fdIndex + Number(b.dataset.fdStep))));
     function closeOnBackdrop(dialog) {
       dialog.addEventListener('click', e => {
@@ -2152,7 +2257,6 @@
       if (e.key === 'ArrowLeft') showFd(fdIndex - 1);
     });
     fdDialog.addEventListener('close', () => fdFilm.pause());
-    fdShots.forEach(s => { if (s.img) new Image().src = s.img; });
 
     // ── Innovation Day photo viewer ──
     const photoDialog = document.getElementById('photoDialog');
@@ -2169,7 +2273,7 @@
 
     // ── Typed roles ──
     const typedEl = document.getElementById('typedText');
-    const roles = ['RAG & LLM systems', 'multimodal AI pipelines', 'full-stack web apps', 'data-driven evaluation'];
+    const roles = ['RAG & LLM systems', 'computer vision & ML models', 'multimodal AI pipelines', 'full-stack web apps', 'data-driven evaluation'];
 
     if (!reduceMotion) {
       (async () => {
