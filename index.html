@@ -13,8 +13,10 @@
   <meta name="twitter:title" content="Pasit Boonyinglour — Software Engineer" />
   <meta name="twitter:description" content="Software Engineer Intern at Western Digital, building FixDrive AI. Open to full-time roles." />
   <link rel="icon" type="image/png" href="pic/logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500;600&display=swap" />
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500;600&family=Noto+Sans+Thai:wght@400;500;600&display=swap');
 
     *, *::before, *::after {
       box-sizing: border-box;
@@ -71,8 +73,9 @@
       border-radius: 50%;
       pointer-events: none;
       z-index: 9999;
-      transform: translate(-50%, -50%);
-      transition: transform 0.08s, width 0.2s, height 0.2s, opacity 0.2s;
+      transform: translate3d(-100px, -100px, 0) translate(-50%, -50%);
+      transition: width 0.2s, height 0.2s, opacity 0.2s;
+      will-change: transform;
     }
 
     #cursor-ring {
@@ -83,9 +86,10 @@
       border-radius: 50%;
       pointer-events: none;
       z-index: 9998;
-      transform: translate(-50%, -50%);
-      transition: transform 0.18s ease, width 0.2s, height 0.2s, opacity 0.2s, border-color 0.2s;
+      transform: translate3d(-100px, -100px, 0) translate(-50%, -50%);
+      transition: width 0.2s, height 0.2s, opacity 0.2s, border-color 0.2s;
       opacity: 0.5;
+      will-change: transform;
     }
 
     body.cursor-hover #cursor {
@@ -96,6 +100,11 @@
     body.cursor-hover #cursor-ring {
       width: 56px; height: 56px;
       opacity: 0.25;
+    }
+
+    @media (hover: none), (pointer: coarse) {
+      body { cursor: auto; }
+      #cursor, #cursor-ring { display: none; }
     }
 
     /* ── Navbar ── */
@@ -1118,7 +1127,42 @@
       color: var(--on-accent);
     }
 
-    .fd-shot { margin: 0; }
+    .fd-shot {
+      position: relative;
+      margin: 0;
+    }
+
+    .fd-play {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      aspect-ratio: 1600 / 940;
+      display: grid;
+      place-items: center;
+      padding: 0;
+      border: 0;
+      background: none;
+    }
+
+    .fd-play span {
+      width: 76px; height: 76px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.92);
+      color: #0b1c3a;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+      transition: transform 0.2s;
+    }
+
+    .fd-play:hover span,
+    .fd-play:focus-visible span { transform: scale(1.08); }
+
+    .fd-play svg {
+      width: 30px; height: 30px;
+      margin-left: 4px;
+      fill: currentColor;
+    }
 
     .fd-shot img,
     .fd-shot video {
@@ -1501,9 +1545,11 @@
     </div>
     <div class="hero-right reveal">
       <img
-        src="pic/33.png"
+        src="pic/profile.webp"
         alt="Pasit Boonyinglour"
         class="hero-photo"
+        width="760" height="1014"
+        fetchpriority="high"
       />
     </div>
   </section>
@@ -1515,7 +1561,7 @@
 
       <div class="project-card project-card--wide project-card--featured reveal">
         <div class="project-thumb fd-thumb" data-gallery="fixdrive" role="button" tabindex="0" aria-label="View FixDrive AI app features">
-          <img src="pic/fixdrive-opening.webp" alt="FixDrive AI — Smart AI Maintenance Assistant Chatbot: files, machine alerts and knowledge in, answers out" />
+          <img src="pic/fixdrive-opening.webp" alt="FixDrive AI — Smart AI Maintenance Assistant Chatbot: files, machine alerts and knowledge in, answers out" loading="lazy" decoding="async" />
           <span class="project-tag">Featured · WD Internship</span>
         </div>
         <div class="project-body">
@@ -1549,13 +1595,13 @@
           </div>
           <figure class="fd-photo">
             <button type="button" data-photo="On stage at WD Elevate · Innovation Day">
-              <img src="pic/elevate-stage.webp" alt="Pasit presenting FixDrive AI on stage at WD Elevate · Innovation Day" loading="lazy" />
+              <img src="pic/elevate-stage.webp" alt="Pasit presenting FixDrive AI on stage at WD Elevate · Innovation Day" loading="lazy" decoding="async" />
             </button>
             <figcaption>On stage at Innovation Day</figcaption>
           </figure>
           <figure class="fd-photo">
             <button type="button" data-photo="With Senior Director Narongsak Khosee">
-              <img src="pic/elevate-director.webp" alt="Group photo with Senior Director Narongsak Khosee" loading="lazy" style="object-position: center 30%" />
+              <img src="pic/elevate-director.webp" alt="Group photo with Senior Director Narongsak Khosee" loading="lazy" decoding="async" style="object-position: center 30%" />
             </button>
             <figcaption>With Senior Director Narongsak Khosee</figcaption>
           </figure>
@@ -1565,7 +1611,7 @@
 
       <div class="project-card reveal">
         <div class="project-thumb fd-thumb" data-gallery="cv" role="button" tabindex="0" aria-label="View Visual Defect Inspection demo screens">
-          <img src="pic/cv-inspect.webp" alt="Visual Defect Inspection demo: a broken bottle flagged as DEFECT with a heatmap over the break" />
+          <img src="pic/cv-inspect.webp" alt="Visual Defect Inspection demo: a broken bottle flagged as DEFECT with a heatmap over the break" loading="lazy" decoding="async" />
           <span class="project-tag">Computer Vision · Deep Learning</span>
         </div>
         <div class="project-body">
@@ -1591,7 +1637,7 @@
 
       <div class="project-card reveal">
         <div class="project-thumb fd-thumb" data-gallery="ml" role="button" tabindex="0" aria-label="View Predictive Maintenance demo screens">
-          <img src="pic/ml-simulator.webp" alt="Predictive Maintenance demo: a 97% failure-risk gauge with physics readouts and the reasons behind the prediction" />
+          <img src="pic/ml-simulator.webp" alt="Predictive Maintenance demo: a 97% failure-risk gauge with physics readouts and the reasons behind the prediction" loading="lazy" decoding="async" />
           <span class="project-tag">Machine Learning · Data Science</span>
         </div>
         <div class="project-body">
@@ -1617,7 +1663,7 @@
 
       <div class="project-card reveal">
         <div class="project-thumb">
-          <img src="pic/card1.png" alt="Nurse Shift Management System" />
+          <img src="pic/card1.webp" alt="Nurse Shift Management System" loading="lazy" decoding="async" />
           <span class="project-tag">Full Stack · System Analyst</span>
         </div>
         <div class="project-body">
@@ -1648,7 +1694,7 @@
 
       <div class="project-card reveal">
         <div class="project-thumb">
-          <img src="pic/card2.png" alt="KU Club Web-App" />
+          <img src="pic/card2.webp" alt="KU Club Web-App" loading="lazy" decoding="async" />
           <span class="project-tag">Frontend · Internship</span>
         </div>
         <div class="project-body">
@@ -1669,7 +1715,7 @@
 
       <div class="project-card reveal">
         <div class="project-thumb">
-          <img src="pic/card3.png" alt="RunMate" />
+          <img src="pic/card3.webp" alt="RunMate" loading="lazy" decoding="async" />
           <span class="project-tag">UX/UI Design</span>
         </div>
         <div class="project-body">
@@ -1690,7 +1736,7 @@
 
       <div class="project-card reveal">
         <div class="project-thumb">
-          <img src="pic/card4.png" alt="Student Request Management System" />
+          <img src="pic/card4.webp" alt="Student Request Management System" loading="lazy" decoding="async" />
           <span class="project-tag">JavaFX · OOP</span>
         </div>
         <div class="project-body">
@@ -1712,7 +1758,7 @@
 
       <div class="project-card project-card--wide reveal">
         <div class="project-thumb">
-          <img src="pic/agent.png" alt="AI Agent Project" />
+          <img src="pic/agent.webp" alt="AI Agent Project" loading="lazy" decoding="async" />
           <span class="project-tag" style="background: #f59e0b; color: #000;">In Development</span>
         </div>
         <div class="project-body">
@@ -1748,7 +1794,8 @@
         <source src="video/fixdrive-ai-film-voice.mp4" type="video/mp4" />
         <track kind="subtitles" src="video/fixdrive-ai-film.en.vtt" srclang="en" label="English" default />
       </video>
-      <img id="fdShotImg" src="pic/fd-chat.webp" alt="" />
+      <button type="button" class="fd-play" id="fdPlay" aria-label="Play the FixDrive AI film" hidden><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></button>
+      <img id="fdShotImg" alt="" />
       <figcaption id="fdShotDesc"></figcaption>
     </figure>
     <div class="fd-dialog-foot">
@@ -1777,8 +1824,8 @@
     <div class="timeline">
       <div class="timeline-item timeline-item--top reveal">
         <div>
-          <img src="pic/wd-logo-dark.webp" alt="Western Digital" class="timeline-logo--wd logo-on-dark" />
-          <img src="pic/wd-logo.webp" alt="Western Digital" class="timeline-logo--wd logo-on-light" />
+          <img src="pic/wd-logo-dark.webp" alt="Western Digital" class="timeline-logo--wd logo-on-dark" loading="lazy" decoding="async" />
+          <img src="pic/wd-logo.webp" alt="Western Digital" class="timeline-logo--wd logo-on-light" loading="lazy" decoding="async" />
         </div>
         <span class="timeline-date">Jul 2026 — Dec 2026<span class="now-pill"><span class="badge-dot"></span>Current</span></span>
         <div>
@@ -1802,7 +1849,7 @@
         </div>
       </div>
       <div class="timeline-item reveal">
-        <img src="pic/ocs.png" alt="OCS" class="timeline-logo" />
+        <img src="pic/ocs.webp" alt="OCS" class="timeline-logo" loading="lazy" decoding="async" />
         <span class="timeline-date">Apr 2025 — Jun 2025</span>
         <div>
           <p class="timeline-role">Frontend Developer Intern</p>
@@ -1811,7 +1858,7 @@
         </div>
       </div>
       <div class="timeline-item reveal">
-        <img src="pic/kasetsartlogo.png" alt="Kasetsart University" class="timeline-logo" />
+        <img src="pic/kasetsartlogo.webp" alt="Kasetsart University" class="timeline-logo" loading="lazy" decoding="async" />
         <span class="timeline-date">2023 — Present</span>
         <div>
           <p class="timeline-role">Computer Science Student</p>
@@ -2047,28 +2094,32 @@
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const sleep = ms => new Promise(resolve => setTimeout(resolve, reduceMotion ? 0 : ms));
 
-    // ── Custom cursor ──
+    // ── Custom cursor (mouse only): moved with transforms, and idle when the mouse stops ──
     const cursor = document.getElementById('cursor');
     const ring = document.getElementById('cursor-ring');
-    let mouseX = 0, mouseY = 0;
-    let ringX = 0, ringY = 0;
+    let mouseX = -100, mouseY = -100;
+    let ringX = -100, ringY = -100;
+    let cursorFrame = 0;
+    const place = (el, x, y) => { el.style.transform = `translate3d(${x}px, ${y}px, 0) translate(-50%, -50%)`; };
 
-    document.addEventListener('mousemove', e => {
-      mouseX = e.clientX;
-      mouseY = e.clientY;
-      cursor.style.left = mouseX + 'px';
-      cursor.style.top  = mouseY + 'px';
-    });
-
-    // Ring follows with lerp
-    function animateRing() {
-      ringX += (mouseX - ringX) * 0.12;
-      ringY += (mouseY - ringY) * 0.12;
-      ring.style.left = ringX + 'px';
-      ring.style.top  = ringY + 'px';
-      requestAnimationFrame(animateRing);
+    function moveCursor() {
+      place(cursor, mouseX, mouseY);
+      // Ring follows with lerp
+      const follow = reduceMotion ? 1 : 0.28;
+      ringX += (mouseX - ringX) * follow;
+      ringY += (mouseY - ringY) * follow;
+      if (Math.abs(mouseX - ringX) < 0.2 && Math.abs(mouseY - ringY) < 0.2) { ringX = mouseX; ringY = mouseY; }
+      place(ring, ringX, ringY);
+      cursorFrame = ringX !== mouseX || ringY !== mouseY ? requestAnimationFrame(moveCursor) : 0;
     }
-    animateRing();
+
+    if (matchMedia('(hover: hover) and (pointer: fine)').matches) {
+      document.addEventListener('pointermove', e => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+        if (!cursorFrame) cursorFrame = requestAnimationFrame(moveCursor);
+      }, { passive: true });
+    }
 
     // Hover state on interactive elements
     document.querySelectorAll('a, button, .project-card').forEach(el => {
@@ -2159,6 +2210,7 @@
     const fdDialog = document.getElementById('fdDialog');
     const fdTabsEl = document.getElementById('fdTabs');
     const fdFilm = document.getElementById('fdFilm');
+    const fdPlay = document.getElementById('fdPlay');
     const fdImg = document.getElementById('fdShotImg');
     const GALLERIES = {
       fixdrive: {
@@ -2203,6 +2255,7 @@
       const shot = fdShots[fdIndex];
       fdFilm.hidden = !shot.video;
       fdImg.hidden = !!shot.video;
+      fdPlay.hidden = !shot.video || fdFilm.played.length > 0;
       if (!shot.video) {
         fdFilm.pause();
         fdImg.src = shot.img;
@@ -2259,6 +2312,8 @@
       if (e.key === 'ArrowLeft') showFd(fdIndex - 1);
     });
     fdDialog.addEventListener('close', () => fdFilm.pause());
+    fdPlay.addEventListener('click', () => fdFilm.play());
+    fdFilm.addEventListener('play', () => { fdPlay.hidden = true; });
 
     // ── Innovation Day photo viewer ──
     const photoDialog = document.getElementById('photoDialog');
