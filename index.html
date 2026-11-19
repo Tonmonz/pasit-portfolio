@@ -1611,20 +1611,20 @@
 
       <div class="project-card reveal">
         <div class="project-thumb fd-thumb" data-gallery="cv" role="button" tabindex="0" aria-label="View Visual Defect Inspection demo screens">
-          <img src="pic/cv-inspect.webp" alt="Visual Defect Inspection demo: a broken bottle flagged as DEFECT with a heatmap over the break" loading="lazy" decoding="async" />
+          <img src="pic/cv-boxes.webp" alt="Visual Defect Inspection demo: a broken bottle flagged as DEFECT, with a heatmap and an OpenCV box over the break" loading="lazy" decoding="async" />
           <span class="project-tag">Computer Vision · Deep Learning</span>
         </div>
         <div class="project-body">
           <h3 class="project-title">Visual Defect Inspection</h3>
           <p class="project-desc">
-            Finds defects on industrial parts by learning only from good parts, then shows exactly where the defect is with a heatmap. A PatchCore-style anomaly detection model built in PyTorch and tested on the MVTec AD benchmark, where it caught every defective bottle and metal nut. Runs on a laptop CPU with a FastAPI web demo.
+            Finds defects on industrial parts by learning only from good parts, then shows where each defect is with a heatmap and OpenCV boxes. A PatchCore-style anomaly detection model built in PyTorch and tested on the MVTec AD benchmark, where it caught every defective bottle and metal nut. I also trained a YOLO11 detector on labelled defects and compared the two on the same held-out images. Runs on a laptop CPU with a FastAPI web demo.
           </p>
           <div class="project-stack">
             <span class="stack-pill">Python</span>
             <span class="stack-pill">PyTorch</span>
-            <span class="stack-pill">Computer Vision</span>
+            <span class="stack-pill">OpenCV</span>
+            <span class="stack-pill">YOLO</span>
             <span class="stack-pill">Anomaly Detection</span>
-            <span class="stack-pill">scikit-learn</span>
             <span class="stack-pill">FastAPI</span>
           </div>
           <div style="display:flex; gap:16px; flex-wrap:wrap; align-items:center; margin-top:auto;">
@@ -1986,6 +1986,8 @@
           <span class="toolkit-pill is-prod">NumPy</span>
           <span class="toolkit-pill">Machine Learning</span>
           <span class="toolkit-pill">Computer Vision</span>
+          <span class="toolkit-pill">OpenCV</span>
+          <span class="toolkit-pill">YOLO</span>
           <span class="toolkit-pill">Anomaly Detection</span>
           <span class="toolkit-pill">PyTorch</span>
           <span class="toolkit-pill">scikit-learn</span>
@@ -2256,8 +2258,9 @@
         note: 'Images: MVTec AD dataset (CC BY-NC-SA 4.0)',
         ratio: '1600 / 1000',
         shots: [
-          { tab: 'Inspect', img: 'pic/cv-inspect.webp', alt: 'A broken bottle flagged as DEFECT with a heatmap over the break', desc: 'Pick a test image the model has never seen: it scans the part, says PASS or DEFECT, and the heatmap marks where the defect is.' },
+          { tab: 'Inspect', img: 'pic/cv-boxes.webp', alt: 'A broken bottle flagged as DEFECT with a heatmap and an OpenCV box over the break', desc: 'Pick a test image the model has never seen: it says PASS or DEFECT, the heatmap shows where, and OpenCV draws a box around each defect.' },
           { tab: 'Compare', img: 'pic/cv-compare.webp', alt: 'Slider comparing a scratched metal nut with its heatmap', desc: 'Drag the slider to compare the photo with the heatmap — here it finds a small scratch on a metal nut.' },
+          { tab: 'YOLO vs PatchCore', img: 'pic/cv-yolo.webp', alt: 'Bar chart of defects caught by PatchCore and YOLO11n on the same held-out images, with YOLO boxes on example defects', desc: 'PatchCore learned from good parts only; YOLO11 learned from labelled defect boxes. On the same held-out images, PatchCore still caught slightly more defects.' },
           { tab: 'Results', img: 'pic/cv-results.webp', alt: 'Test results for bottle, metal nut and screw', desc: 'Results on images never used for learning, for every product — including where the model still struggles: tiny defects on screws.' },
         ],
       },
