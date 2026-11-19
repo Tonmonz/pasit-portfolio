@@ -1662,6 +1662,32 @@
       </div>
 
       <div class="project-card reveal">
+        <div class="project-thumb fd-thumb" data-gallery="mellow" role="button" tabindex="0" aria-label="View Mellow app screens">
+          <img src="pic/mellow-cover.webp" alt="Mellow — Your English safe space" loading="lazy" decoding="async" />
+          <span class="project-tag">Generative AI · Voice</span>
+        </div>
+        <div class="project-body">
+          <h3 class="project-title">Mellow — English Voice Companion</h3>
+          <p class="project-desc">
+            A private English-speaking companion I built for my own practice. You talk to it out loud and it answers in real time through the OpenAI Realtime API over WebRTC. It remembers your profile and past conversations, corrects you in the style you choose, and writes a short learning recap after each session.
+          </p>
+          <div class="project-stack">
+            <span class="stack-pill">TypeScript</span>
+            <span class="stack-pill">React</span>
+            <span class="stack-pill">OpenAI Realtime API</span>
+            <span class="stack-pill">WebRTC</span>
+            <span class="stack-pill">Tailwind CSS</span>
+            <span class="stack-pill">Cloudflare Workers</span>
+          </div>
+          <div style="display:flex; gap:16px; flex-wrap:wrap; align-items:center; margin-top:auto;">
+            <a href="https://github.com/Tonmonz/mellow-english-companion" target="_blank" rel="noopener" class="project-link">View on GitHub ↗</a>
+            <button type="button" class="project-link fd-open" data-gallery="mellow">View app screens ↗</button>
+            <span class="project-note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Personal app · no public demo</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card reveal">
         <div class="project-thumb">
           <img src="pic/card1.webp" alt="Nurse Shift Management System" loading="lazy" decoding="async" />
           <span class="project-tag">Full Stack · System Analyst</span>
@@ -1756,7 +1782,7 @@
         </div>
       </div>
 
-      <div class="project-card project-card--wide reveal">
+      <div class="project-card reveal">
         <div class="project-thumb">
           <img src="pic/agent.webp" alt="AI Agent Project" loading="lazy" decoding="async" />
           <span class="project-tag" style="background: #f59e0b; color: #000;">In Development</span>
@@ -2233,6 +2259,17 @@
           { tab: 'Inspect', img: 'pic/cv-inspect.webp', alt: 'A broken bottle flagged as DEFECT with a heatmap over the break', desc: 'Pick a test image the model has never seen: it scans the part, says PASS or DEFECT, and the heatmap marks where the defect is.' },
           { tab: 'Compare', img: 'pic/cv-compare.webp', alt: 'Slider comparing a scratched metal nut with its heatmap', desc: 'Drag the slider to compare the photo with the heatmap — here it finds a small scratch on a metal nut.' },
           { tab: 'Results', img: 'pic/cv-results.webp', alt: 'Test results for bottle, metal nut and screw', desc: 'Results on images never used for learning, for every product — including where the model still struggles: tiny defects on screws.' },
+        ],
+      },
+      mellow: {
+        kicker: 'Mellow · App screens',
+        note: 'Screens from the app running locally',
+        ratio: '1600 / 1000',
+        shots: [
+          { tab: 'Today', img: 'pic/mellow-today.webp', alt: 'Mellow home screen with a microphone button to start a voice conversation and a voice picker', desc: 'Tap the microphone and just talk. Mellow answers out loud in real time, and you can pick its voice before you start.' },
+          { tab: 'Memory', img: 'pic/mellow-memory.webp', alt: 'Memory page with the notes Mellow keeps about the learner', desc: "Mellow keeps short notes about you, so tomorrow's conversation feels like a continuation, not a restart." },
+          { tab: 'Settings', img: 'pic/mellow-settings.webp', alt: 'Settings page with the learner profile, English goal and correction style', desc: 'Tell Mellow about yourself and choose how much it should correct you while you talk.' },
+          { tab: 'Dark Mode', img: 'pic/mellow-dark.webp', alt: 'Mellow home screen in dark mode', desc: 'A calm dark theme; the model, voice and theme choices are saved in the browser.' },
         ],
       },
       ml: {
